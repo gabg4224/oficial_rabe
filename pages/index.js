@@ -16,8 +16,10 @@ export default function Home({ info }) {
   );
 }
 
-export const getServerSideProps = async () => {
-  const res = await fetch('http://localhost:3000/api/products');
+export const getServerSideProps = async (context) => {
+
+  const {query}=context
+  const res = await fetch(`${process.env.BASE_URL}/api/products`);
   const info = await res.json();
 
   console.log(info)
