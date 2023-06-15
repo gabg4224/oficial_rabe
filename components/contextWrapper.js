@@ -6,7 +6,7 @@ const mainContext = createContext({
   isOpen: true,
   items: [],
   handlerMenu: () => {},
-  handlerOpenSubmenu: () => {},
+  handlerOpenSubmenu: ()=>{},
   verifyer: () => {},
   openCart: () => {},
   closeCart: () => {},
