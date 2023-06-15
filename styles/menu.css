@@ -1,0 +1,33 @@
+/* Font Awesome Icons */
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css");
+
+/* Styles for the menu */
+nav {
+  width: 240px;
+  background-color: #f1f1f1;
+}
+
+nav i {
+  font-size: 16px;
+}
+
+nav .fa-chevron-up {
+  transform: rotate(180deg);
+}
+
+nav .fa-chevron-down,
+nav .fa-chevron-up {
+  transition: transform 0.3s ease-in-out;
+}
+
+nav .hover\:bg-gray-100:hover {
+  background-color: #e1e1e1;
+}
+
+nav .block {
+  display: block;
+}
+
+nav .hidden {
+  display: none;
+}

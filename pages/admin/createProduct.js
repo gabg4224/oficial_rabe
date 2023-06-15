@@ -1,0 +1,396 @@
+import { useState } from "react";
+
+import { useRouter } from "next/router";
+
+
+export default function CreateProduct() {
+
+  const router = useRouter();
+  const [product, setProduct] = useState({
+    title: "",
+    description: "",
+    price: 1,
+    color: [
+      {
+        colorTitle: "",
+        colorCode: "",
+        tallas: [
+          {
+            talla: "XS",
+            stock: 0,
+          },
+          {
+            talla: "S",
+            stock: 0,
+          },
+          {
+            talla: "M",
+            stock: 0,
+          },
+          {
+            talla: "L",
+            stock: 0,
+          },
+          {
+            talla: "XL",
+            stock: 0,
+          },
+          {
+            talla: "2XL",
+            stock: 0,
+          },
+        ],
+        imagenes: [
+          {
+            imagen: "",
+          },
+          {
+            imagen: "",
+          },
+          {
+            imagen: "",
+          },
+          {
+            imagen: "",
+          },
+        ],
+      },
+    ],
+  });
+
+  const handleAddColor = () => {
+    setProduct((prevProduct) => {
+      const newColor = {
+        colorTitle: "",
+         colorCode: "",
+        tallas: [
+          {
+            talla: "XS",
+            stock: 0,
+          },
+          {
+            talla: "S",
+            stock: 0,
+          },
+          {
+            talla: "M",
+            stock: 0,
+          },
+          {
+            talla: "L",
+            stock: 0,
+          },
+          {
+            talla: "XL",
+            stock: 0,
+          },
+          {
+            talla: "2XL",
+            stock: 0,
+          },
+        ],
+        imagenes: [
+          {
+            imagen: "",
+          },
+          {
+            imagen: "",
+          },
+          {
+            imagen: "",
+          },
+          {
+            imagen: "",
+          },
+        ],
+      };
+
+      return {
+        ...prevProduct,
+        color: [...prevProduct.color, newColor],
+      };
+    });
+  };
+
+  const  handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log(e);
+
+   await fetch("/api/products", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(product),
+    });
+
+    router.push("/admin");
+
+    
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setProduct((prevProduct) => ({
+      ...prevProduct,
+      [name]: value,
+    }));
+
+    console.log(product);
+  };
+
+  const handleRemoveColor = (colorIndex) => {
+    setProduct((prevProduct) => {
+      const updatedColors = [...prevProduct.color];
+      updatedColors.splice(colorIndex, 1);
+
+      return {
+        ...prevProduct,
+        color: updatedColors,
+      };
+    });
+  };
+  const handleChangeColor = (e, colorIndex) => {
+    const { name, value } = e.target;
+
+    setProduct((prevProduct) => {
+      const updatedColors = [...prevProduct.color];
+      updatedColors[colorIndex] = {
+        ...updatedColors[colorIndex],
+        colorTitle: value,
+      };
+
+      return {
+        ...prevProduct,
+        color: updatedColors,
+      };
+    });
+  };
+
+
+  const handleChangeColorCode= (e, colorIndex) => {
+    const { name, value } = e.target;
+
+    setProduct((prevProduct) => {
+      const updatedColors = [...prevProduct.color];
+      updatedColors[colorIndex] = {
+        ...updatedColors[colorIndex],
+        colorCode: value,
+      };
+
+      return {
+        ...prevProduct,
+        color: updatedColors,
+      };
+    });
+  };
+
+  const handleChangeStock = (e, colorIndex, sizeIndex) => {
+    const { value } = e.target;
+
+    setProduct((prevProduct) => {
+      const updatedColors = [...prevProduct.color];
+      const updatedSizes = [...updatedColors[colorIndex].tallas];
+      updatedSizes[sizeIndex] = {
+        ...updatedSizes[sizeIndex],
+        stock: parseInt(value),
+      };
+      updatedColors[colorIndex] = {
+        ...updatedColors[colorIndex],
+        tallas: updatedSizes,
+      };
+
+      return {
+        ...prevProduct,
+        color: updatedColors,
+      };
+    });
+  };
+
+  const handleChangeImage = (e, colorIndex, imageIndex) => {
+    const { value } = e.target;
+
+    setProduct((prevProduct) => {
+      const updatedColors = [...prevProduct.color];
+      const updatedImages = [...updatedColors[colorIndex].imagenes];
+      updatedImages[imageIndex] = {
+        ...updatedImages[imageIndex],
+        imagen: value,
+      };
+      updatedColors[colorIndex] = {
+        ...updatedColors[colorIndex],
+        imagenes: updatedImages,
+      };
+
+      return {
+        ...prevProduct,
+        color: updatedColors,
+      };
+    });
+  };
+
+  return (
+    <>
+      <div className="min-h-screen w-screen bg-gray-200 flex justify-center pt-6 ">
+        <div className="w-1/3">
+          <form onSubmit={handleSubmit} action="" method="post">
+            <div className=" flex flex-col gap-3">
+            <div>
+                <label htmlFor="Categoria">Categoria</label>
+                <input
+                  type="text"
+                  name="category"
+                  placeholder="cargo o sueter"
+                  className=" w-full h-10 flex p-2 "
+                  onChange={handleChange}
+                />
+              </div>
+              <div>
+                <label htmlFor="Titulo">Titutlo</label>
+                <input
+                  type="text"
+                  name="title"
+                  placeholder="Titulo..."
+                  className=" w-full h-10 flex p-2 "
+                  onChange={handleChange}
+                />
+              </div>
+              <div>
+                <label htmlFor="Descricion">Descripcion</label>
+                <textarea
+                  type="text"
+                  name="description"
+                  placeholder="Descripcion..."
+                  className="  w-full h-24 flex p-2 "
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="py-2">
+                <label htmlFor="Precio">Precio</label>
+                <input
+                  type="number"
+                  name="price"
+                  placeholder="Precio..."
+                  className=" w-full h-10 flex p-2 "
+                  min={1}
+                  onChange={handleChange}
+                />
+              </div>
+            </div>
+
+            {/* Colores */}
+            {product.color.map((colorField, colorIndex) => (
+              <div
+                key={colorIndex}
+                className="w-full bg-white rounded flex flex-col p-2 py-4 gap-3 "
+              >
+                <h3 className="text-center">Color {colorIndex + 1}</h3>
+                <div>
+                  <label htmlFor={`colors[${colorIndex}].name`}>Color:</label>
+                  <input
+                    type="text"
+                    name={`color[${colorIndex}].colorTitle`}
+                    placeholder="Rojo"
+                    className="pl-2"
+                    onChange={(e) => handleChangeColor(e, colorIndex)}
+                  />
+                    <input
+                    type="text"
+                    name={`color[${colorIndex}].colorCode`}
+                    placeholder="#000000"
+                    className="pl-2"
+                    onChange={(e) => handleChangeColorCode(e, colorIndex)}
+                  />
+                </div>
+                <div className="flex flex-col justify-cente gap-3 items-center">
+                  {/* Tallas y stock */}
+                  {colorField.tallas.map((sizeField, sizeIndex) => (
+                    <div
+                      key={sizeIndex}
+                      className="flex  w-3/5  items-center border border-gray-400 py-2 rounded-md gap-1 justify-between  px-3"
+                    >
+                      <div className="pl-6">{sizeField.talla}</div>
+
+                      <input
+                        type="number"
+                        name={`color[${colorIndex}].tallas[${sizeIndex}].stock`}
+                        min={0}
+                        value={sizeField.stock}
+                        onChange={(e) =>
+                          handleChangeStock(e, colorIndex, sizeIndex)
+                        }
+                        className="w-10"
+                      />
+                    </div>
+                  ))}
+                </div>
+                <div className="flex justify-center"> </div>
+
+                {/* Imágenes */}
+                <div className="flex flex-col justify-center items-center border border-gray-400">
+                  <label htmlFor={`colors[${colorIndex}].images`}>
+                    Imágenes:
+                  </label>
+                  <input
+                    className="border border-gray-400 w-full"
+                    type="text"
+                    name={`color[${colorIndex}].imagenes[0].imagen`}
+                    value={colorField.imagenes[0].imagen}
+                    onChange={(e) => handleChangeImage(e, colorIndex, 0)}
+                  />
+                  <input
+                    className="border border-gray-400 w-full"
+                    type="text"
+                    name={`color[${colorIndex}].imagenes[1].imagen`}
+                    value={colorField.imagenes[1].imagen}
+                    onChange={(e) => handleChangeImage(e, colorIndex, 1)}
+                  />
+                  <input
+                    className="border border-gray-400 w-full"
+                    type="text"
+                    name={`color[${colorIndex}].imagenes[2].imagen`}
+                    value={colorField.imagenes[2].imagen}
+                    onChange={(e) => handleChangeImage(e, colorIndex, 2)}
+                  />
+                  <input
+                    className="border border-gray-400 w-full"
+                    type="text"
+                    name={`color[${colorIndex}].imagenes[3].imagen`}
+                    value={colorField.imagenes[3].imagen}
+                    onChange={(e) => handleChangeImage(e, colorIndex, 3)}
+                  />
+                </div>
+
+                <div className="flex justify-center">
+                  <button
+                    type="button"
+                    className="bg-red-500 text-white font-bold py-1 px-2 rounded w-2/4"
+                    onClick={() => handleRemoveColor(colorIndex)}
+                  >
+                    Eliminar color
+                  </button>
+                </div>
+              </div>
+            ))}
+
+            <button
+              type="button"
+              className="bg-blue-500 text-white font-bold py-2 px-4 rounded"
+              onClick={handleAddColor}
+            >
+              Agregar color
+            </button>
+
+            <div className="w-full  pt-3 flex justify-center">
+              <input
+                type="submit"
+                value={"Guardar"}
+                className="bg-blue-500 text-white font-bold py-2 px-4 rounded "
+              />
+            </div>
+          </form>
+        </div>
+      </div>
+    </>
+  );
+}
