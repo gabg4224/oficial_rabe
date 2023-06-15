@@ -49,8 +49,10 @@ export default function View({ view, info }) {
 
             <div className="block inset-0 relative z-20 flex-col  items-start pt-3">
               <div className="pb-3 flex flex-col gap-2 ">
-                <h3 className="text-sm uppercase font-bold">{info.title}</h3>
-                <p className="text-xs">{info.price}</p>
+              <h3 className="text-xs uppercase text-black font-semibold">
+                  {info.title}
+                </h3>
+                <p className="text-xs">${info.price.toFixed(2)} USD</p>
               </div>
               <div className="flex flex-col">
                 <div className="flex gap-3">

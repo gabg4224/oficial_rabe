@@ -205,14 +205,14 @@ console.log(updatedColors);
                 />
               </div>
               <div>
-                <label htmlFor="Titulo">Titutlo</label>
+                <label htmlFor="Titulo">Titulo</label>
                 <input
                   type="text"
                   name="title"
                   placeholder="Titulo..."
                   className=" w-full h-10 flex p-2 "
                   onChange={handleChange}
-                  value={info.title}
+                  value={product.title}
                 />
               </div>
               <div>
@@ -223,7 +223,7 @@ console.log(updatedColors);
                   placeholder="Descripcion..."
                   className="  w-full h-24 flex p-2 "
                   onChange={handleChange}
-                  value={info.description}
+                  value={product.description}
                 />
               </div>
               <div className="py-2">
@@ -235,7 +235,7 @@ console.log(updatedColors);
                   className=" w-full h-10 flex p-2 "
                   min={1}
                   onChange={handleChange}
-                  value={info.price}
+                  value={product.price}
                 />
               </div>
             </div>
@@ -255,7 +255,7 @@ console.log(updatedColors);
                     placeholder="Rojo"
                     className="pl-2"
                     onChange={(e) => handleChangeColor(e, colorIndex)}
-                    value={colorField.colorTitle}
+                    value={product.color[colorIndex].colorTitle}
                   />
                   <input
                     type="text"
@@ -263,7 +263,7 @@ console.log(updatedColors);
                     placeholder="#000000"
                     className="pl-2"
                     onChange={(e) => handleChangeColorCode(e, colorIndex)}
-                    value={colorField.colorCode}
+                    value={product.color[colorIndex].colorCode}
                   />
                 </div>
                 <div className="flex flex-col justify-cente gap-3 items-center">
@@ -364,7 +364,7 @@ export const getServerSideProps = async (context) => {
 
   const productID = query.id;
 
-  const res = await fetch(`http://localhost:3000/api/products/${productID}`);
+  const res = await fetch(`${process.env.BASE_URL}/api/products/${productID}`);
   const info = await res.json();
   return { props: { info } };
 };

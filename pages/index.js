@@ -16,9 +16,9 @@ export default function Home({ info }) {
   );
 }
 
-export const getServerSideProps = async (context) => {
+export const getServerSideProps = async () => {
 
-  const {query}=context
+
   const res = await fetch(`${process.env.BASE_URL}/api/products`);
   const info = await res.json();
 
