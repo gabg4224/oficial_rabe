@@ -1,4 +1,5 @@
 import { Catalog} from "@/components/catalog";
+import { getItems } from "@/services/items";
 
 export default function Admin({info}) {
 
@@ -14,8 +15,7 @@ export default function Admin({info}) {
 }
 
 export const getServerSideProps = async () => {
-    const res = await fetch(`${process.env.BASE_URL}/api/products`);
-    const info = await res.json();
+    const info = await getItems()
   
    
     return { props: { info } };

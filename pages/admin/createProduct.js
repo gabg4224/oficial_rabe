@@ -53,6 +53,24 @@ export default function CreateProduct() {
           {
             imagen: "",
           },
+          {
+            imagen: "",
+          },
+          {
+            imagen: "",
+          },
+          {
+            imagen: "",
+          },
+          {
+            imagen: "",
+          },
+          {
+            imagen: "",
+          },
+          {
+            imagen: "",
+          },
         ],
       },
     ],
@@ -90,6 +108,24 @@ export default function CreateProduct() {
           },
         ],
         imagenes: [
+          {
+            imagen: "",
+          },
+          {
+            imagen: "",
+          },
+          {
+            imagen: "",
+          },
+          {
+            imagen: "",
+          },
+          {
+            imagen: "",
+          },
+          {
+            imagen: "",
+          },
           {
             imagen: "",
           },
@@ -358,6 +394,48 @@ export default function CreateProduct() {
                     name={`color[${colorIndex}].imagenes[3].imagen`}
                     value={colorField.imagenes[3].imagen}
                     onChange={(e) => handleChangeImage(e, colorIndex, 3)}
+                  />
+                  <input
+                    className="border border-gray-400 w-full"
+                    type="text"
+                    name={`color[${colorIndex}].imagenes[4].imagen`}
+                    value={colorField.imagenes[4].imagen}
+                    onChange={(e) => handleChangeImage(e, colorIndex, 4)}
+                  />
+                  <input
+                    className="border border-gray-400 w-full"
+                    type="text"
+                    name={`color[${colorIndex}].imagenes[5].imagen`}
+                    value={colorField.imagenes[5].imagen}
+                    onChange={(e) => handleChangeImage(e, colorIndex, 5)}
+                  />
+                  <input
+                    className="border border-gray-400 w-full"
+                    type="text"
+                    name={`color[${colorIndex}].imagenes[6].imagen`}
+                    value={colorField.imagenes[6].imagen}
+                    onChange={(e) => handleChangeImage(e, colorIndex, 6)}
+                  />
+                  <input
+                    className="border border-gray-400 w-full"
+                    type="text"
+                    name={`color[${colorIndex}].imagenes[7].imagen`}
+                    value={colorField.imagenes[7].imagen}
+                    onChange={(e) => handleChangeImage(e, colorIndex, 7)}
+                  />
+                  <input
+                    className="border border-gray-400 w-full"
+                    type="text"
+                    name={`color[${colorIndex}].imagenes[8].imagen`}
+                    value={colorField.imagenes[8].imagen}
+                    onChange={(e) => handleChangeImage(e, colorIndex, 8)}
+                  />
+                  <input
+                    className="border border-gray-400 w-full"
+                    type="text"
+                    name={`color[${colorIndex}].imagenes[9].imagen`}
+                    value={colorField.imagenes[9].imagen}
+                    onChange={(e) => handleChangeImage(e, colorIndex, 9)}
                   />
                 </div>
 
