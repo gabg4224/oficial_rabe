@@ -6,7 +6,7 @@ export default function first() {
 
 <>
 
-<h1>hola cargos</h1>
+<h1>master</h1>
 </>
 
     )
