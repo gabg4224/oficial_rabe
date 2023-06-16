@@ -23,12 +23,12 @@ export default function View({ view, info }) {
   if (view == "card") {
     return (
       <>
-        <Link
-          href={`/shop/cargos/${getFriendlyTitle(info.title)}`}
-          className="flex relative justify-self-center  box-border flex-col w-auto max-w-[17rem] md:max-w-[15rem] h-auto p-2 group cursor-pointer mb-3 "
+        <li
+       
+          className="flex relative justify-self-center  box-border flex-col w-auto max-w-[17rem] md:max-w-[15rem] h-auto p-2 group  mb-3 "
         >
-          <div className="h-full relative ">
-            <div>
+          <div className="h-full relative pb-3">
+            <Link href={`/shop/cargos/${getFriendlyTitle(info.title)}`}>
               <div className="bg-[#f3f3f5] flex justify-center items-center h-60 relative z-10">
                 <Image
                   src={`${activeColor.images[0].imagen}`}
@@ -45,7 +45,7 @@ export default function View({ view, info }) {
                   alt="camisa"
                 ></Image>
               </div>
-            </div>
+            </Link>
 
             <div className="block inset-0 relative z-20 flex-col  items-start pt-3">
               <div className="pb-3 flex flex-col gap-2 ">
@@ -55,15 +55,15 @@ export default function View({ view, info }) {
                 <p className="text-xs">${info.price.toFixed(2)} USD</p>
               </div>
               <div className="flex flex-col">
-                <div className="flex gap-3">
+                <div className="flex gap-2">
                   {info.color &&
                     info.color.map((item, index) => (
                       <div
                       key={index}
                       onClick={() => colorHandler(index, item)}
-                      className={` rounded-full    ring-[0.5px] ring-offset-0 w-5 h-5 ${
+                      className={` rounded-full  cursor-pointer   ring-[1px] ring-offset-0 w-5 h-5 ${
                         activeColor.colorCode == item.colorCode
-                          ? `ring-offset-1 ring-[#000000]`
+                          ? `ring-offset-2 ring-[#000000]`
                           : "ring-offset-0 ring-[#d1d1d4]"
                       }`}
                     style={{ backgroundColor:`${item.colorCode}` }}>
@@ -74,9 +74,9 @@ export default function View({ view, info }) {
               </div>
             </div>
 
-            <div className=" bg-white group-hover:shadow-md group-hover:shadow-black/25 group-hover:scale-110 absolute top-0 h-full w-full z-0 transition-all duration-500"></div>
+            <div className=" bg-white group-hover:shadow-md group-hover:shadow-black/25 group-hover:scale-110  absolute top-0 h-full w-full z-0 transition-all duration-500"></div>
           </div>
-        </Link>
+        </li>
       </>
     );
   }
