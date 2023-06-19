@@ -37,14 +37,14 @@ export default function ShoppingCart() {
               </p>
               <button
                 type="button"
-                className="-m-2 p-2 text-gray-400 hover:text-gray-500"
+                className=" text-gray-400 hover:text-gray-500"
                 onClick={cart.closeCart}
               >
                 <span className="sr-only">Close panel</span>
                 <XMarkIcon className="h-6 w-6" aria-hidden="true" />
               </button>
             </div>
-            <div className=" px-3 mt-8 flex flex-col flex-grow h-full overflow-y-auto">
+            <div className=" px-3 pt-8 flex flex-col flex-grow h-full overflow-y-auto">
               <div className="flex flex-col overflow-y-scroll">
                 <ul className="">
                   {cart.items.map((item) => (
