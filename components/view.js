@@ -37,7 +37,7 @@ export default function View({ view, info }) {
                   alt="camisa"
                 ></Image>
               </div>
-              <div className="bg-[#f3f3f5] h-60 inset-0 flex justify-center items-center absolute z-20 opacity-0 group-hover:opacity-100 transition-all duration-500 ease-out">
+              <div className="bg-[#f3f3f5] h-60 inset-0 flex justify-center items-center absolute z-20 opacity-0 lg:group-hover:opacity-100 transition-all duration-500 ease-out">
                 <Image
                   src={`${activeColor.images[1].imagen}`}
                   width={3000}
@@ -74,7 +74,7 @@ export default function View({ view, info }) {
               </div>
             </div>
 
-            <div className=" bg-white group-hover:shadow-md group-hover:shadow-black/25 group-hover:scale-110  absolute top-0 h-full w-full z-0 transition-all duration-500"></div>
+            <div className=" bg-white lg:group-hover:shadow-md lg:group-hover:shadow-black/25 group-hover:scale-110  absolute top-0 h-full w-full z-0 transition-all duration-500"></div>
           </div>
         </li>
       </>

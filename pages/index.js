@@ -10,8 +10,10 @@ export default function Home({ info }) {
  
   return (
     <>
+   
       <Banner></Banner>
       <Catalog view={"homePage"} info={info}></Catalog>
+      
     </>
   );
 }

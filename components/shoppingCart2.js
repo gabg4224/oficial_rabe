@@ -20,13 +20,13 @@ export default function ShoppingCart() {
   return (
     <>
       <div
-        className={`fixed inset-0 -z-10" bg-gray-500 bg-opacity-75 opacity-0   transition-all duration-500 ${
+        className={`fixed inset-0 -z-10" bg-gray-500 bg-opacity-75 opacity-0    transition-all duration-500 ${
           cart.isOpen ? "opacity-100 z-20 " : "opacity-0 -z-10"
         }`}
       />
       <div
-        className={`fixed -right-1/4  top-0 z-30 w-[25%] bg-white  h-screen transition-all duration-700  ${
-          cart.isOpen ? "right-0 " : "-right-1/4"
+        className={`fixed top-0 z-30 sm:w-[75%]  md:w-[50%] lg:w-[25%] bg-white  h-screen transition-all duration-700  ${
+          cart.isOpen ? "right-0 " : " sm:-right-3/4 md:-right-1/2 lg:-right-1/4"
         }`}
       >
         <div className=" block max-h-full h-full">

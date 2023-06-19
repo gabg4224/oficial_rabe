@@ -53,7 +53,7 @@ export default function ContextWrapper({ children }) {
   ]);
 
   function handlerMenu() {
-    setIsMenuOpen(!state);
+    setIsMenuOpen(!isMenuOpen);
   }
 
   function handlerOpenSubmenu(label) {

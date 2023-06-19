@@ -9,14 +9,19 @@ import {
   ChevronDownIcon,
 } from "@heroicons/react/20/solid";
 import { v4 as uuidv4 } from "uuid";
+
 export const NewBar = () => {
   const cart = useAppContext();
 
   return (
     <>
-      <div className="relative bg-white">
-        <div className="mx-auto max-w-7xl  px-6">
-          <div className=" flex items-center justify-between  border-b-2 border-gray-100 md:justify-start">
+      {/* Contenedor principal de la barra de navegación */}
+      <div className="relative bg-white z-20">
+        {/* Contenedor interno para alinear y ajustar el contenido */}
+        <div className="mx-auto max-w-7xl px-6">
+          {/* Contenedor de la barra de navegación */}
+          <div className="flex items-center justify-between border-b-2 border-gray-100 md:justify-start">
+            {/* Icono para mostrar/ocultar el menú en pantallas pequeñas */}
             <div className="md:hidden">
               <Bars3Icon
                 className="h-6 w-6"
@@ -24,24 +29,31 @@ export const NewBar = () => {
               />
             </div>
 
-            <div className=" justify-start lg:w-0 lg:flex-1 hidden md:flex">
-              <ul className="flex w-auto gap-4 ">
+            {/* Lista de enlaces de navegación */}
+            <div className="justify-start lg:w-0 lg:flex-1 hidden md:flex">
+              <ul className="flex w-auto gap-4">
+                {/* Iterar sobre las rutas y generar los elementos de la lista */}
                 {routes.map((route, index) => (
                   <li
                     className={`flex relative items-center text-base group py-6`}
                     key={uuidv4()}
                   >
+                    {/* Enlace utilizando la ruta y etiqueta proporcionadas */}
                     <Link href={route.route} className="font-medium">
                       <span> {route.label}</span>
                     </Link>
 
+                    {/* Mostrar icono de despliegue si hay un submenú */}
                     {route.subMenu && <ChevronDownIcon className="h-5 ml-1" />}
 
+                    {/* Mostrar submenú si existe */}
                     {route.subMenu && (
                       <div
-                        className={` bg-white absolute w-0 h-0 group-hover:w-40 group-hover:h-auto hover:w-40 hover:h-auto top-16 border-transparent  left-5 box-border  shadow-xl rounded-md  overflow-hidden transition-all ease-in-out duration-300`}
+                        className={`bg-white absolute w-0 h-0 group-hover:w-40 group-hover:h-auto hover:w-40 hover:h-auto top-16 border-transparent left-5 box-border shadow-xl rounded-md overflow-hidden transition-all ease-in-out duration-300`}
                       >
+                        {/* Lista de elementos del submenú */}
                         <ul className="flex flex-col items-center">
+                          {/* Iterar sobre los elementos del submenú y generar los enlaces */}
                           {route.subMenuItems.map((subRoute, index) => (
                             <Link
                               key={uuidv4()}
@@ -59,12 +71,14 @@ export const NewBar = () => {
               </ul>
             </div>
 
+            {/* Logotipo de la barra de navegación */}
             <div className="">
               <Link href={"/"}>
                 <Image src={rabe} width={130} height={50} alt="rabe" />
               </Link>
             </div>
 
+            {/* Botón para abrir el carrito */}
             <div className="items-center justify-end md:flex md:flex-1 lg:w-0">
               <button
                 onClick={cart.openCart}
@@ -78,6 +92,7 @@ export const NewBar = () => {
                   stroke="currentColor"
                   className="w-6 h-6"
                 >
+                  {/* Icono de carrito de compras */}
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
@@ -86,37 +101,42 @@ export const NewBar = () => {
                 </svg>
               </button>
             </div>
-            {/*debajo va el menu responsive */}
+
+            {/* Menú desplegable en pantalla completa */}
             <div
               className={`${
                 !cart.isMenuOpen && "hidden"
-              }  bg-slate-500/50 min-h-screen fixed w-full top-0 left-0 right-0 backdrop-blur-sm `}
+              } bg-slate-500/50 min-h-screen fixed w-full top-0 left-0 right-0 backdrop-blur-sm`}
             ></div>
             <div
               className={`${
                 cart.isMenuOpen ? "w-3/4" : "w-0"
-              }  bg-white min-h-screen w-0 fixed overflow-scroll  top-0 left-0 transition-all duration-300`}
+              } bg-white min-h-screen w-0 fixed overflow-scroll top-0 left-0 transition-all duration-300`}
             >
               <div className={`${!cart.isMenuOpen && "hidden"} pt-3`}>
+                {/* Botón para cerrar el menú desplegable */}
                 <button
                   className="ml-4 text-gray-400"
                   onClick={() => cart.handlerMenu()}
                 >
                   <XMarkIcon className="h-8 w-8" aria-hidden="true" />
                 </button>
-                <div className="mx-auto px-3 mt-1 ">
+                <div className="mx-auto px-3 mt-1">
+                  {/* Lista de enlaces del menú desplegable */}
                   <ul className="flex flex-col">
+                    {/* Iterar sobre las rutas y generar los elementos de la lista */}
                     {routes.map((route, index) => (
                       <li
                         key={uuidv4()}
-                        className=" flex flex-col py-3   border-b-2 "
+                        className="flex flex-col py-3 border-b-2"
                       >
-                        <div className=" flex justify-between ">
+                        <div className="flex justify-between">
+                          {/* Enlace utilizando la ruta y etiqueta proporcionadas */}
                           <Link href={route.route} className="uppercase">
-                            {" "}
                             {route.label}
                           </Link>
 
+                          {/* Mostrar icono de despliegue si hay un submenú */}
                           {route.subMenu && (
                             <ChevronDownIcon
                               className={`${
@@ -131,8 +151,10 @@ export const NewBar = () => {
                           )}
                         </div>
 
+                        {/* Mostrar submenú si existe */}
                         {route.subMenu && (
                           <ul className="overflow-hidden">
+                            {/* Iterar sobre los elementos del submenú y generar los enlaces */}
                             {route.subMenuItems.map((subItems, index) => (
                               <div
                                 key={uuidv4()}
