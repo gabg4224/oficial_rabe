@@ -25,7 +25,7 @@ export default function ShoppingCart() {
         }`}
       />
       <div
-        className={`fixed top-0 z-30 sm:w-[75%]  md:w-[50%] lg:w-[25%] bg-white  h-screen transition-all duration-700  ${
+        className={`fixed top-0 z-30 sm:w-[75%]  md:w-[50%] lg:w-[25%] bg-white max-h-screen  h-screen transition-all duration-700  ${
           cart.isOpen ? "right-0 " : " sm:-right-3/4 md:-right-1/2 lg:-right-1/4"
         }`}
       >
