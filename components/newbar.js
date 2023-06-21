@@ -56,9 +56,10 @@ export const NewBar = () => {
                           {/* Iterar sobre los elementos del submenú y generar los enlaces */}
                           {route.subMenuItems.map((subRoute, index) => (
                             <Link
+                          
                               key={uuidv4()}
                               href={subRoute.route}
-                              className="py-2 hover:bg-slate-500"
+                              className="py-2 w-full justify-center flex items-center  hover:bg-slate-500"
                             >
                               {subRoute.label}
                             </Link>
@@ -79,10 +80,10 @@ export const NewBar = () => {
             </div>
 
             {/* Botón para abrir el carrito */}
-            <div className="items-center justify-end md:flex md:flex-1 lg:w-0">
+            <div className="items-center justify-end md:flex md:flex-1 py-2 lg:w-0">
               <button
                 onClick={cart.openCart}
-                className="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0"
+                className="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base  md:mt-0"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -162,7 +163,9 @@ export const NewBar = () => {
                                   cart.verifyer(route.label) ? "h-11" : "h-0"
                                 } flex flex-col px-5 text-gray-600 h-0 transition-all duration-300`}
                               >
-                                <Link href={subItems.route} className="py-3">
+                                <Link
+                                  onClick={cart.handlerMenu}
+                                href={subItems.route} className="py-3">
                                   {subItems.label}
                                 </Link>
                               </div>

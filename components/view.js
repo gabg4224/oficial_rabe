@@ -25,7 +25,7 @@ export default function View({ view, info }) {
       <>
         <li
        
-          className="flex relative justify-self-center  box-border flex-col w-auto max-w-[17rem] md:max-w-[15rem] h-auto p-2 group  mb-3 "
+          className="flex relative justify-self-center  box-border flex-col w-auto max-w-[17rem] md:max-w-[15rem] p-2 group  mb-3 "
         >
           <div className="h-full relative pb-3">
             <Link href={`/shop/cargos/${getFriendlyTitle(info.title)}`}>
@@ -37,7 +37,7 @@ export default function View({ view, info }) {
                   alt="camisa"
                 ></Image>
               </div>
-              <div className="bg-[#f3f3f5] h-60 inset-0 flex justify-center items-center absolute z-20 opacity-0 lg:group-hover:opacity-100 transition-all duration-500 ease-out">
+              <div className="bg-[#f3f3f5] md:h-60 inset-0 flex justify-center items-center absolute z-20 opacity-0 lg:group-hover:opacity-100 transition-all duration-500 ease-out">
                 <Image
                   src={`${activeColor.images[1].imagen}`}
                   width={3000}
@@ -74,7 +74,7 @@ export default function View({ view, info }) {
               </div>
             </div>
 
-            <div className=" bg-white lg:group-hover:shadow-md lg:group-hover:shadow-black/25 group-hover:scale-110  absolute top-0 h-full w-full z-0 transition-all duration-500"></div>
+            <div className=" bg-white lg:group-hover:shadow-md lg:group-hover:shadow-black/25 md:group-hover:scale-110  absolute top-0 h-full w-full z-0 transition-all duration-500"></div>
           </div>
         </li>
       </>
