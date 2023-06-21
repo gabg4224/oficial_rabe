@@ -19,7 +19,7 @@ export default function seccionCargo({ info }) {
   return (
     <>
       <div className="pt-10 sm:px-3  flex items-center justify-center">
-        <div className=" flex w-full items-center justify-center">
+        <div className=" flex lg:w-10/12 items-center justify-center">
         <ItemsTable view={"card"} info={info}></ItemsTable>
         </div>
       </div>

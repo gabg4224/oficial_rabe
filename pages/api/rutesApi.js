@@ -16,7 +16,7 @@ export const  routes = [
     subMenu: true,
     subMenuItems: [
       { label: "cargos", route: "/shop/cargos", icon: "BuildingStorefrontIcon" },
-      { label: "arriba", route: "/", icon: "BuildingStorefrontIcon" },
+      { label: "arriba", route: "/shop/arriba", icon: "BuildingStorefrontIcon" },
     ],
   },
   {
