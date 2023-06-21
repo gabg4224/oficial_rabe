@@ -20,9 +20,9 @@ export const NewBar = () => {
         {/* Contenedor interno para alinear y ajustar el contenido */}
         <div className="mx-auto max-w-7xl px-6">
           {/* Contenedor de la barra de navegación */}
-          <div className="flex items-center justify-between border-b-2 border-gray-100 md:justify-start">
+          <div className="flex items-center justify-between border-b-2 border-gray-100 lg:justify-start">
             {/* Icono para mostrar/ocultar el menú en pantallas pequeñas */}
-            <div className="md:hidden">
+            <div className= "flex items-center lg:hidden">
               <Bars3Icon
                 className="h-6 w-6"
                 onClick={() => cart.handlerMenu()}
@@ -30,7 +30,7 @@ export const NewBar = () => {
             </div>
 
             {/* Lista de enlaces de navegación */}
-            <div className="justify-start lg:w-0 lg:flex-1 hidden md:flex">
+            <div className="justify-start lg:w-0 lg:flex-1 hidden lg:flex">
               <ul className="flex w-auto gap-4">
                 {/* Iterar sobre las rutas y generar los elementos de la lista */}
                 {routes.map((route, index) => (
@@ -80,7 +80,7 @@ export const NewBar = () => {
             </div>
 
             {/* Botón para abrir el carrito */}
-            <div className="items-center justify-end md:flex md:flex-1 py-2 lg:w-0">
+            <div className="items-center justify-end md:flex lg:flex-1 py-2 lg:w-0">
               <button
                 onClick={cart.openCart}
                 className="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base  md:mt-0"
