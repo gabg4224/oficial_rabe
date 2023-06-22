@@ -1,6 +1,6 @@
 import { getPathsFromId,getInfoProducts } from "@/utils/utilsFunctions";
 
-export default function first() {
+export default function cargos() {
 
 
 
