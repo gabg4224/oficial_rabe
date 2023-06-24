@@ -1,7 +1,7 @@
 export default function Footer() {
   return (
     <footer className="text-gray-600 body-font flex w-full items-center justify-center ">
-      <div className=" px-5 py-8  flex items-center justify-center  sm:flex-row  md:w-11/12 sm:w-full">
+      <div className=" px-5 py-2 flex items-center justify-center  sm:flex-row  md:w-11/12 sm:w-full">
         <a className="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
           <svg
             xmlns="http://www.w3.org/2000/svg"

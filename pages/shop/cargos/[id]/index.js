@@ -1,5 +1,6 @@
 import { getInfoProducts, getPathsFromId } from "@/utils/utilsFunctions";
 import { useState } from "react";
+import Image from "next/image";
 import { DocumentTextIcon } from "@heroicons/react/20/solid";
 import Stocker from "@/components/stocker";
 import CartButton from "@/components/cartButton";
@@ -38,13 +39,17 @@ export default function CargosDinamic({ info }) {
   return (
     <>
       <div className="h-6 "></div>
-      <div className="w-full h-screen pt-4 flex justify-center bg-gray-100">
-        <div className="flex h-full w-[80%]">
-          <div className=" flex basis-7/12   bg-zinc-600 h-full  ">
-            <div className="h-full w-full"> asd</div>
+      <div className="w-full min-h-[80vh]  pt-4 flex justify-center bg-gray-100">
+        <div className="flex sm:flex-col lg:flex-row h-full sm:w-full lg:w-[80%]">
+          <div className=" flex lg:w-7/12 bg-zinc-600  ">
+            <div className="h-full w-full flex justify-center items-center"> 
+            <Image src={info.color[0].imagenes[0].imagen} width={3000} height={3000} alt="asad">
+              
+            </Image>
+            </div>
           </div>
-          <div className="flex flex-col grow px-4 ">
-            <div className=" flex flex-col   pb-3 border-b-2 border-yellow-200 ">
+          <div className="flex flex-col grow px-4 sm:w-full lg:max-w-[40%] h-full ">
+            <div className=" w-full flex flex-col   pb-3 border-b-2 border-yellow-200 ">
               <div className=" flex flex-col">
                 <div className="flex flex-col ">
                   <h3 className="text-sm pb-4 text-gray-500 uppercase">
@@ -58,12 +63,12 @@ export default function CargosDinamic({ info }) {
                   </h2>
                 </div>
 
-                <div className="w-full py-2">
-                  <p>{info.description}</p>
+                <div className=" flex flex-wrap  py-2 ">
+                  <p className=" h-full w-full break-all">{info.description}</p>
                 </div>
 
                 <div className="flex h-16 ">
-                  <div className="flex gap-2 h-full items-center">
+                  <div className="flex gap-2 h-full  items-center">
                     {info.color.map((item, index) => (
                       <div
                         key={index}

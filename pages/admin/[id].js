@@ -55,7 +55,23 @@ const router = useRouter();
           },
           {
             imagen: "",
+          },{
+            imagen: "",
           },
+          {
+            imagen: "",
+          },
+          {
+            imagen: "",
+          },
+          {
+            imagen: "",
+          }, {
+            imagen: "",
+          }, {
+            imagen: "",
+          },
+          
         ],
       };
 
