@@ -2,3 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+@keyframes ping-slow {
+    75%, 100% {
+      transform: scale(2);
+      opacity: 0;
+    }
+  }
