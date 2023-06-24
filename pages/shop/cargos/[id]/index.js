@@ -6,12 +6,21 @@ import Stocker from "@/components/stocker";
 import CartButton from "@/components/cartButton";
 export default function CargosDinamic({ info }) {
 
-
+ const colorHandler = (index, infoItem) => {
+    setActiveColor({
+      ...activeColor,
+      colorName:infoItem.colorTitle,
+      talla:infoItem.tallas,
+      colorCode: infoItem.colorCode,
+      images: infoItem.imagenes
+    });
+  };
 
   console.log(info.color[0].tallas);
   const [activeColor, setActiveColor] = useState({
     talla: info.color[0].tallas,
     tallaActive: info.color[0].tallas[0],
+    colorName:info.color[0].colorTitle,
     colorCode: info.color[0].colorCode,
     images: info.color[0].imagenes,
   });
@@ -43,7 +52,7 @@ export default function CargosDinamic({ info }) {
         <div className="flex sm:flex-col lg:flex-row h-full sm:w-full lg:w-[80%]">
           <div className=" flex lg:w-7/12 bg-zinc-600  ">
             <div className="h-full w-full flex justify-center items-center"> 
-            <Image src={info.color[0].imagenes[0].imagen} width={3000} height={3000} alt="asad">
+            <Image src={activeColor.images[0].imagen} width={3000} height={3000} alt="asad">
               
             </Image>
             </div>
@@ -53,7 +62,7 @@ export default function CargosDinamic({ info }) {
               <div className=" flex flex-col">
                 <div className="flex flex-col ">
                   <h3 className="text-sm pb-4 text-gray-500 uppercase">
-                    {item.color}
+                    {activeColor.colorName}
                   </h3>
                   <h1 className="text-xl uppercase font-bold pb-1">
                     {info.title}
