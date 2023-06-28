@@ -35,6 +35,8 @@ export default function View({ view, info }) {
                   width={300}
                   height={200}
                   alt="camisa"
+                  className="transition-opacity opacity-0 duration-1000"
+                  onLoadingComplete={(image)=> image.classList.remove("opacity-0")}
                 ></Image>
               </div>
               <div className="bg-[#f3f3f5] md:h-60 inset-0 flex justify-center items-center absolute z-20 opacity-0 lg:group-hover:opacity-100 transition-all duration-500 ease-out">
