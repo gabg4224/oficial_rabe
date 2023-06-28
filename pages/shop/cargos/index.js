@@ -27,8 +27,9 @@ export default function seccionCargo({ info }) {
   );
 }
 
-export const getServerSideProps = async () => {
+export const getStaticProps = async () => {
   const info = await getItemsByCategory("cargo");
 console.log(info)
-  return { props: { info } };
+  return { props: { info },
+  revalidate: 600 };
 };

@@ -52,16 +52,16 @@ export const NewBar = () => {
                       {/* Mostrar submenú si existe */}
                       {route.subMenu && (
                         <div
-                          className={`bg-white absolute w-0 h-0 group-hover:w-40 group-hover:h-auto hover:w-40 hover:h-auto top-16 border-transparent left-5 box-border shadow-xl rounded-md overflow-hidden transition-all ease-in-out duration-300`}
+                          className={`bg-white absolute w-40    opacity-0 group-hover:opacity-100  top-12 group-hover:top-16  border left-5 box-border shadow-xl overflow-hidden rounded-md transition-all ease-in-out duration-400`}
                         >
                           {/* Lista de elementos del submenú */}
-                          <ul className="flex flex-col items-center">
+                          <ul className="flex flex-col items-center h-full">
                             {/* Iterar sobre los elementos del submenú y generar los enlaces */}
                             {route.subMenuItems.map((subRoute, index) => (
                               <Link
                                 key={uuidv4()}
                                 href={subRoute.route}
-                                className="py-2 w-full justify-center flex items-center  hover:bg-slate-500"
+                                className="py-2 flex-grow  w-full justify-center flex items-center  hover:bg-slate-500"
                               >
                                 {subRoute.label}
                               </Link>

@@ -1,29 +1,20 @@
-
 import Banner from "@/components/banner";
 
-import {Catalog} from "@/components/catalog";
-
-
+import { Catalog } from "@/components/catalog";
+import { getItems } from "@/services/items";
 
 export default function Home({ info }) {
-
- 
   return (
     <>
-   
       <Banner></Banner>
       <Catalog view={"homePage"} info={info}></Catalog>
-      
     </>
   );
 }
 
-export const getServerSideProps = async () => {
+export const getStaticProps = async () => {
+  const info = await getItems();
 
-
-  const res = await fetch(`${process.env.BASE_URL}/api/products`);
-  const info = await res.json();
-
-  console.log(info)
-  return { props: { info } };
+  console.log(info);
+  return { props: { info }, revalidate: 600 };
 };

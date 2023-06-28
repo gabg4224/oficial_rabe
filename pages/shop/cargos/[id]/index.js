@@ -5,14 +5,13 @@ import { DocumentTextIcon } from "@heroicons/react/20/solid";
 import Stocker from "@/components/stocker";
 import CartButton from "@/components/cartButton";
 export default function CargosDinamic({ info }) {
-
- const colorHandler = (index, infoItem) => {
+  const colorHandler = (index, infoItem) => {
     setActiveColor({
       ...activeColor,
-      colorName:infoItem.colorTitle,
-      talla:infoItem.tallas,
+      colorName: infoItem.colorTitle,
+      talla: infoItem.tallas,
       colorCode: infoItem.colorCode,
-      images: infoItem.imagenes
+      images: infoItem.imagenes,
     });
   };
 
@@ -20,7 +19,7 @@ export default function CargosDinamic({ info }) {
   const [activeColor, setActiveColor] = useState({
     talla: info.color[0].tallas,
     tallaActive: info.color[0].tallas[0],
-    colorName:info.color[0].colorTitle,
+    colorName: info.color[0].colorTitle,
     colorCode: info.color[0].colorCode,
     images: info.color[0].imagenes,
   });
@@ -34,16 +33,16 @@ export default function CargosDinamic({ info }) {
     talla: info.color[0].tallas,
   });
 
-
-
   const sizeHandler = (item) => {
+    
     setActiveColor({
       ...activeColor,
       tallaActive: item,
     });
 
-    console.log(activeColor.tallaActive);
-  }
+    console.log('item.talla: '+item.talla);
+    console.log('active.talla.active : '+activeColor.tallaActive.talla);
+  };
 
   return (
     <>
@@ -51,10 +50,13 @@ export default function CargosDinamic({ info }) {
       <div className="w-full min-h-[80vh]  pt-4 flex justify-center bg-gray-100">
         <div className="flex sm:flex-col lg:flex-row h-full sm:w-full lg:w-[80%]">
           <div className=" flex lg:w-7/12 bg-zinc-600  ">
-            <div className="h-full w-full flex justify-center items-center"> 
-            <Image src={activeColor.images[0].imagen} width={3000} height={3000} alt="asad">
-              
-            </Image>
+            <div className="h-full w-full flex justify-center items-center">
+              <Image
+                src={activeColor.images[0].imagen}
+                width={3000}
+                height={3000}
+                alt="asad"
+              ></Image>
             </div>
           </div>
           <div className="flex flex-col grow px-4 sm:w-full lg:max-w-[40%] h-full ">
@@ -96,12 +98,10 @@ export default function CargosDinamic({ info }) {
               <div className="flex justify-between">
                 <h3>Talla: {activeColor.tallaActive.talla}</h3>
 
-                
-              <div className="flex ">
-<DocumentTextIcon className="h-6 w-6"></DocumentTextIcon>
-              <h3>Size Chart</h3>
-
-              </div>
+                <div className="flex ">
+                  <DocumentTextIcon className="h-6 w-6"></DocumentTextIcon>
+                  <h3>Size Chart</h3>
+                </div>
               </div>
 
               <div className=" h-12  my-2">
@@ -110,11 +110,10 @@ export default function CargosDinamic({ info }) {
                     <div
                       key={item._id}
                       className={`flex justify-center items-center  w-12 h-full border border-gray-300 lg:hover:border-gray-700 transition-all duration-200 cursor-pointer ${
-                        item.talla == activeColor.tallaActive
+                        item.talla == activeColor.tallaActive.talla
                           ? "border-[#000000] shadow-inner"
                           : ""
                       }`}
-
                       onClick={() => sizeHandler(item)}
                     >
                       <div className="">{item.talla}</div>
@@ -128,10 +127,8 @@ export default function CargosDinamic({ info }) {
               </div>
 
               <div className="h-12 flex items-center">
-              <Stocker stock={activeColor.tallaActive.stock} ></Stocker>
-
+                <Stocker stock={activeColor.tallaActive.stock}></Stocker>
               </div>
-              
             </div>
           </div>
         </div>
@@ -156,6 +153,6 @@ export async function getStaticProps({ params }) {
 
   return {
     props: info,
-    revalidate: 60, // will be passed to the page component as props
+    revalidate: 600, // will be passed to the page component as props
   };
 }
