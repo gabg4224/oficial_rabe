@@ -4,6 +4,7 @@ import Image from "next/image";
 import { DocumentTextIcon } from "@heroicons/react/20/solid";
 import Stocker from "@/components/stocker";
 import CartButton from "@/components/cartButton";
+import Slider from "@/components/slider";
 export default function CargosDinamic({ info }) {
   const colorHandler = (index, infoItem) => {
     setActiveColor({
@@ -40,27 +41,33 @@ export default function CargosDinamic({ info }) {
       tallaActive: item,
     });
 
-    console.log('item.talla: '+item.talla);
-    console.log('active.talla.active : '+activeColor.tallaActive.talla);
-  };
+    };
 
   return (
     <>
       <div className="h-6 "></div>
-      <div className="w-full min-h-[80vh]  pt-4 flex justify-center bg-gray-100">
-        <div className="flex sm:flex-col lg:flex-row h-full sm:w-full lg:w-[80%]">
-          <div className=" flex lg:w-7/12 bg-zinc-600  ">
-            <div className="h-full w-full flex justify-center items-center">
-              <Image
+      
+      <div className="w-full  sm:h-auto  lg:h-screen  pt-4 flex justify-center ">
+        <div className="flex sm:flex-col lg:max-h-168 lg:flex-row h-full sm:w-full lg:w-[70%] justify-center">
+          <div className="lg:w-2/4 sm:w-full  lg:max-w-2xl   flex justify-center    lg:h-full">
+            <div className="h-full sm:w-11/12 bg-zinc-600 sm:py-14 lg:py-14  ">
+
+              {info && <Slider info={activeColor.images}></Slider>}
+            { /* <Image
                 src={activeColor.images[0].imagen}
                 width={3000}
                 height={3000}
                 alt="asad"
-              ></Image>
+  ></Image>*/}
             </div>
           </div>
-          <div className="flex flex-col grow px-4 sm:w-full lg:max-w-[40%] h-full ">
-            <div className=" w-full flex flex-col   pb-3 border-b-2 border-yellow-200 ">
+
+
+
+
+         <div className="w-full flex md:justify-center lg:justify-normal">
+         <div className="flex flex-col sm:pt-7 lg:py-0  px-4 sm:w-full md:w-[90%]  lg:max-w-xl h-full ">
+            <div className=" w-full flex flex-col   pb-3 border-b-2 border-gray-100 ">
               <div className=" flex flex-col">
                 <div className="flex flex-col ">
                   <h3 className="text-sm pb-4 text-gray-500 uppercase">
@@ -95,7 +102,7 @@ export default function CargosDinamic({ info }) {
                   </div>
                 </div>
               </div>
-              <div className="flex justify-between">
+              <div className="flex justify-between sm:mb-3 lg:m-0">
                 <h3>Talla: {activeColor.tallaActive.talla}</h3>
 
                 <div className="flex ">
@@ -126,13 +133,16 @@ export default function CargosDinamic({ info }) {
                 <CartButton item={item}></CartButton>
               </div>
 
-              <div className="h-12 flex items-center">
+              <div className="h-12 flex items-center sm:py-8">
                 <Stocker stock={activeColor.tallaActive.stock}></Stocker>
               </div>
             </div>
           </div>
+          
+         </div>
         </div>
       </div>
+      
     </>
   );
 }

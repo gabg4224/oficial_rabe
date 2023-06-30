@@ -32,19 +32,20 @@ export default function View({ view, info }) {
               <div className="bg-[#f3f3f5] flex justify-center items-center h-60 relative z-10">
                 <Image
                   src={`${activeColor.images[0].imagen}`}
-                  width={300}
-                  height={200}
+                  width={2000 }
+                  height={2000}
                   alt="camisa"
-                  className="transition-opacity opacity-0 duration-1000"
+                  className="transition-opacity opacity-0 duration-1000 w-fit h-fit max-h-60"
                   onLoadingComplete={(image)=> image.classList.remove("opacity-0")}
                 ></Image>
               </div>
               <div className="bg-[#f3f3f5] md:h-60 inset-0 flex justify-center items-center absolute z-20 opacity-0 lg:group-hover:opacity-100 transition-all duration-500 ease-out">
                 <Image
                   src={`${activeColor.images[1].imagen}`}
-                  width={3000}
+                  width={2000}
                   height={2000}
-                  alt="camisa"
+                  alt="camisa" 
+                  className="w-full"
                 ></Image>
               </div>
             </Link>
