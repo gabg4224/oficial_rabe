@@ -3,7 +3,7 @@ import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
 import Image from "next/image";
 export default ({info}) => {
-  console.log(info[0].imagen)
+  console.log(info[0]._id)
   const [currentSlide, setCurrentSlide] = useState(0);
   const [loaded, setLoaded] = useState(false);
   const [sliderRef, instanceRef] = useKeenSlider({
@@ -36,7 +36,6 @@ info.map((item, index)=>{
           src={item.imagen}
           width={1500}
           height={1000}
-         
           alt="asad"
           className=" lg:max-w-md"
         ></Image>
@@ -94,7 +93,8 @@ info.map((item, index)=>{
   );
 };
 
-function Arrow(props) {
+const Arrow = (props)=>{
+
   const disabeld = props.disabled ? " arrow--disabled" : "";
   return (
     <svg
@@ -113,4 +113,5 @@ function Arrow(props) {
       )}
     </svg>
   );
+
 }
