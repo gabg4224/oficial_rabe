@@ -2,7 +2,10 @@ import React, { useState } from "react";
 import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
 import Image from "next/image";
-export default ({info}) => {
+
+
+
+export default function  Slider({info}){
   console.log(info[0]._id)
   const [currentSlide, setCurrentSlide] = useState(0);
   const [loaded, setLoaded] = useState(false);
@@ -93,7 +96,7 @@ info.map((item, index)=>{
   );
 };
 
-const Arrow = (props)=>{
+export const  Arrow = (props)=>{
 
   const disabeld = props.disabled ? " arrow--disabled" : "";
   return (
