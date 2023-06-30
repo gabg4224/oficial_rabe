@@ -29,7 +29,7 @@ info.map((item, index)=>{
     return(
 
 
-      <div className="keen-slider__slide h-full w-full flex justify-center items-center">
+      <div key={item._id} className="keen-slider__slide h-full w-full flex justify-center items-center">
   
       {
         <Image

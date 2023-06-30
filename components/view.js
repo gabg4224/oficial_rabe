@@ -155,6 +155,7 @@ export default function View({ view, info }) {
               src={"/images/franela.png"}
               width={3000}
               height={2000}
+              alt="shopping item"
               className="h-full w-full object-cover object-center"
             />
           </div>
