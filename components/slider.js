@@ -32,7 +32,7 @@ info.map((item, index)=>{
     return(
 
 
-      <div key={index} className={`keen-slider__slide`} >
+      <div key={index} className={`keen-slider__slide flex justify-center items-center`} >
   
       {
         <Image
