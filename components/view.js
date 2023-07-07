@@ -13,7 +13,6 @@ export default function View({ view, info }) {
   });
 
   const colorHandler = (index, infoItem) => {
-    console.log(activeColor.images);
     setActiveColor({
       colorCode: infoItem.colorCode,
       images: infoItem.imagenes
@@ -152,7 +151,7 @@ export default function View({ view, info }) {
         <li key={info.id} className="flex py-3 items-center border-t">
           <div className="h-28  w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
             <Image
-              src={"/images/franela.png"}
+              src={"https://zwinwrcelthkeoztdgcd.supabase.co/storage/v1/object/public/rabe-images/franela2%20(1).png"}
               width={3000}
               height={2000}
               alt="shopping item"

@@ -6,7 +6,6 @@ import Image from "next/image";
 
 
 export default function  Slider({info}){
-  console.log(info[0]._id)
   const [currentSlide, setCurrentSlide] = useState(0);
   const [loaded, setLoaded] = useState(false);
   const [sliderRef, instanceRef] = useKeenSlider({
@@ -23,6 +22,7 @@ export default function  Slider({info}){
     <>
       <div className="navigation-wrapper relative w-full h-full">
         <div ref={sliderRef} className="keen-slider">
+
         {
 
 info.map((item, index)=>{
@@ -32,7 +32,7 @@ info.map((item, index)=>{
     return(
 
 
-      <div key={item._id} className="keen-slider__slide h-full w-full flex justify-center items-center">
+      <div key={index} className={`keen-slider__slide`} >
   
       {
         <Image
@@ -40,6 +40,7 @@ info.map((item, index)=>{
           width={1500}
           height={1000}
           alt="asad"
+          priority
           className=" lg:max-w-md"
         ></Image>
       }
@@ -51,6 +52,7 @@ info.map((item, index)=>{
 })
 
         }
+  
         </div>
         {loaded && instanceRef.current && (
           <>
@@ -96,7 +98,7 @@ info.map((item, index)=>{
   );
 };
 
-export const  Arrow = (props)=>{
+function Arrow(props){
 
   const disabeld = props.disabled ? " arrow--disabled" : "";
   return (
