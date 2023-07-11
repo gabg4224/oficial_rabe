@@ -31,5 +31,5 @@ export const getStaticProps = async () => {
   const info = await getItemsByCategory("cargo");
 console.log(info)
   return { props: { info },
-  revalidate: 600 };
+  revalidate: 60 };
 };

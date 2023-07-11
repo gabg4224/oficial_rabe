@@ -14,5 +14,5 @@ export default function Home({ info }) {
 
 export const getStaticProps = async () => {
   const info = await getItems();
-  return { props: { info }, revalidate: 600 };
+  return { props: { info }, revalidate: 60 };
 };
