@@ -6,7 +6,7 @@ import CartButton from "@/components/cartButton";
 import Slider from "@/components/slider";
 export default function CargosDinamic({ info }) {
   const colorHandler = (index, infoItem) => {
-    console.log(activeColor.tallaActive);
+    
 
     setActiveColor({
       ...activeColor,
@@ -15,8 +15,8 @@ export default function CargosDinamic({ info }) {
       colorCode: infoItem.colorCode,
       images: infoItem.imagenes,
       tallaActive: infoItem.tallas[0],
+      id: infoItem.tallas[0]._id
     });
-
 
   };
 
@@ -26,22 +26,20 @@ export default function CargosDinamic({ info }) {
     colorName: info.color[0].colorTitle,
     colorCode: info.color[0].colorCode,
     images: info.color[0].imagenes,
+    price:info.price,
+    title:info.title,
+    id: info.color[0].tallas[0]._id
   });
 
-  const [item, setItem] = useState({
-    id: info._id,
-    description: info.description,
-    title: info.title,
-    price: info.price,
-    color: info.color[0].colorTitle,
-    talla: info.color[0].tallas,
-  });
 
-  const sizeHandler = (item,tallaName) => {
+  const sizeHandler = (item) => {
     setActiveColor({
       ...activeColor,
       tallaActive: item,
+      id: item._id
     });
+
+   
 
   };
 
@@ -130,7 +128,7 @@ export default function CargosDinamic({ info }) {
                 </div>
 
                 <div className="pt-8">
-                  <CartButton item={item}></CartButton>
+                  <CartButton item={activeColor}></CartButton>
                 </div>
 
                 <div className="h-12 flex items-center sm:py-8">

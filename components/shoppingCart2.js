@@ -2,7 +2,7 @@
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { useAppContext } from "./contextWrapper";
 
-import View from "./view";
+import ShoppingItemView from "./shoppingItemView";
 import Link from "next/link";
 
 export default function ShoppingCart() {
@@ -48,11 +48,10 @@ export default function ShoppingCart() {
               <div className="flex flex-col overflow-y-scroll">
                 <ul className="">
                   {cart.items.map((item) => (
-                    <View
+                    <ShoppingItemView
                       key={item.id}
-                      view={"shopping item"}
                       info={item}
-                    ></View>
+                    ></ShoppingItemView>
                   ))}
                 </ul>
               </div>

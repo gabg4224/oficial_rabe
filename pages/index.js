@@ -16,3 +16,4 @@ export const getStaticProps = async () => {
   const info = await getItems();
   return { props: { info }, revalidate: 60 };
 };
+

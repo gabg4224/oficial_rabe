@@ -80,13 +80,14 @@ export default function ContextWrapper({ children }) {
     const temp = [...items];
     const found = temp.find((product) => product.id == item.id);
 
-    if (found) {
+    if (found && found.quantity < found.tallaActive.stock) {
       found.quantity++;
     }
     setItems([...temp]);
   }
 
   function handleSubOneItem(item) {
+   
     const temp = [...items];
     const found = temp.find((product) => product.id == item.id);
     if (found && found.quantity > 1) {
@@ -96,6 +97,7 @@ export default function ContextWrapper({ children }) {
   }
 
   function handleRemoveItem(item) {
+    console.log(item)
     const temp = [...items];
     const found = temp.findIndex((product) => product.id == item.id);
     temp.splice(found, 1);
