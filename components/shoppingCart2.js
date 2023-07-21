@@ -41,7 +41,7 @@ export default function ShoppingCart() {
                 onClick={cart.closeCart}
               >
                 <span className="sr-only">Close panel</span>
-                <XMarkIcon className="h-6 w-6" aria-hidden="true" />
+                <XMarkIcon className="h-6 w-6"  aria-hidden="true" />
               </button>
             </div>
             <div className=" px-3 pt-8 flex flex-col flex-grow h-full overflow-y-auto">
@@ -66,8 +66,8 @@ export default function ShoppingCart() {
                 <button className=" text-white flex justify-center items-center py-1  font-bold  text-xs bg-black rounded-sm w-full">
                   Check Out
                 </button>
-                <Link href={"/"}>
-                  <p className="underline text-xs text-gray-500 pt-1 hover:text-gray-600">
+                <Link href={"/shop/buy"}>
+                  <p onClick={cart.closeCart} className="underline text-xs text-gray-500 pt-1 hover:text-gray-600">
                     view cart
                   </p>
                 </Link>

@@ -11,7 +11,7 @@ export default function ShoppingItemView({info}) {
         <li key={info.id} className="flex py-3 items-center border-t">
           <div className="h-28  w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
             <Image
-              src={"https://zwinwrcelthkeoztdgcd.supabase.co/storage/v1/object/public/rabe-images/franela2%20(1).png"}
+              src={info.images[0].imagen}
               width={3000}
               height={2000}
               alt="shopping item"
@@ -22,16 +22,16 @@ export default function ShoppingItemView({info}) {
           <div className="pl-4 flex flex-1 flex-col">
             <div>
               <div className="flex justify-between text-base font-medium text-gray-900">
-                <h3>
-                  <a href={info.href}>{info.title}</a>
+                <h3 className="uppercase">
+                 {info.title}
                 </h3>
-                <p className="pl-4">{info.price.toFixed(2)}</p>
+                <p className="pl-4">${(info.price * info.quantity).toFixed(2)}</p>
               </div>
               <p className="pt-1 text-sm text-gray-500">Talla {info.tallaActive.talla}</p>
-              <p className="pt-1 text-sm text-gray-500 font-semibold">{info.colorName}</p>
+              <p className="pt-1 text-sm text-gray-500 font-semibold uppercase">{info.colorName}</p>
             </div>
             <div className="flex flex-1 pt-1 items-center gap-2  text-sm">
-              <QuantityController item={info}></QuantityController>
+              <QuantityController view={"ShoppingCart"} item={info}></QuantityController>
             </div>
           </div>
         </li>
