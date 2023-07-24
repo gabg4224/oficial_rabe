@@ -15,12 +15,12 @@ export default function Buy() {
   return (
     <>
       <section className="w-full flex justify-center min-h-screen">
-        <div className="w-2/4 pt-12">
+        <div className="sm:w-11/12 md:w-11/12 lg:w-2/4 pt-12">
           <div>
             <h2 className="text-2xl font-semibold mb-6">Your Cart</h2>
             <div className="flex justify-between text-sm uppercase font-light pb-3 mb-3 border-b-[1px]">
               <p>product</p>
-              <p>quantity</p>
+              <p className="sm:hidden md:flex">quantity</p>
               <p>total</p>
             </div>
           </div>
@@ -41,15 +41,21 @@ export default function Buy() {
                     <div>
                       <p className="uppercase">{items.title}</p>
                       <p className="text-sm text-gray-500">
-                        {items.tallaActive.talla}
+                        Talla: {items.tallaActive.talla}
                       </p>
                       <p className="text-sm text-gray-500  uppercase">
                         {items.colorName}
                       </p>
+                      <div className="sm:flex md:hidden">
+                        <QuantityController
+                          view={"buyCart"}
+                          item={items}
+                        ></QuantityController>
+                      </div>
                     </div>
                   </div>
 
-                  <div className="grow flex items-center pl-4">
+                  <div className=" sm:hidden md:flex grow flex items-center pl-4">
                     <QuantityController
                       view={"buyCart"}
                       item={items}
@@ -63,14 +69,19 @@ export default function Buy() {
             })}
           </div>
 
-          <div className="w-full flex justify-between">
-            <div>
-              <Link href={"/"}  className="border-b-2 border-gray-400">Continuar Comprando</Link>
+          <div className="w-full flex justify-between ">
+            <div className="sm:hidden lg:block">
+              <Link href={"/"} className="border-b-2 border-gray-400">
+                Continuar Comprando
+              </Link>
             </div>
-            <div>
-              <button className="text-white  uppercase bg-black  font-medium text-sm px-24 py-4 text-center ">
+            <div className=" bg-black  py-4 sm:w-full lg:w-48 flex justify-center">
+              <Link
+                href={"/shop/buy/pasarela"}
+                className="text-white  uppercase  font-medium text-sm  text-center "
+              >
                 Checkout • ${getTotal()}
-              </button>
+              </Link>
             </div>
           </div>
         </div>

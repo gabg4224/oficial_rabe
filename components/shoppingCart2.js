@@ -64,7 +64,7 @@ export default function ShoppingCart() {
               </div>
               <div className="w-11/12 flex justify-center items-center py-1 flex-col">
                 <button className=" text-white flex justify-center items-center py-1  font-bold  text-xs bg-black rounded-sm w-full">
-                  Check Out
+                <Link href={"/shop/buy/pasarela"} onClick={cart.closeCart}>Check Out</Link>
                 </button>
                 <Link href={"/shop/buy"}>
                   <p onClick={cart.closeCart} className="underline text-xs text-gray-500 pt-1 hover:text-gray-600">
