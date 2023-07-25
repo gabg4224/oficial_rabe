@@ -1,5 +1,5 @@
 import { getItems } from "@/services/items";
-
+import { useAppContext } from "@/components/contextWrapper";
 export async function getPathsFromId() {
   const items = await getItems();
   const id = items.map((item) => {
@@ -31,3 +31,13 @@ export async function getItemsByCategory(category) {
   }
   return info;
 }
+
+
+export const getTotal = () => {
+  const cart = useAppContext();
+  const total = cart.items
+    .reduce((acc, item) => acc + item.price * item.quantity, 0)
+    .toFixed(2);
+  const totalFixed = total.t;
+  return total;
+};

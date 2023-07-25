@@ -2,16 +2,11 @@ import { useAppContext } from "@/components/contextWrapper";
 import Image from "next/image";
 import QuantityController from "@/components/qtyController";
 import Link from "next/link";
+import { getTotal } from "@/utils/utilsFunctions";
 export default function Buy() {
   const cart = useAppContext();
 
-  const getTotal = () => {
-    const total = cart.items
-      .reduce((acc, item) => acc + item.price * item.quantity, 0)
-      .toFixed(2);
-    const totalFixed = total.t;
-    return total;
-  };
+  
   return (
     <>
       <section className="w-full flex justify-center min-h-screen">

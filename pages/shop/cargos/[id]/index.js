@@ -77,12 +77,6 @@ export default function CargosDinamic({ info }) {
                     </h2>
                   </div>
 
-                  <div className=" flex flex-wrap  py-2 ">
-                    <p className=" h-full w-full break-all">
-                      {info.description}
-                    </p>
-                  </div>
-
                   <div className="flex h-16 ">
                     <div className="flex gap-2 h-full  items-center">
                       {info.color.map((item, index) => (
@@ -130,10 +124,16 @@ export default function CargosDinamic({ info }) {
                 <div className="pt-8">
                   <CartButton item={activeColor}></CartButton>
                 </div>
-
+               
                 <div className="h-12 flex items-center sm:py-8">
                   <Stocker stock={activeColor.tallaActive.stock}></Stocker>
                 </div>
+
+                <div className=" flex flex-wrap  py-2 ">
+                    <text className=" h-full w-full whitespace-pre-wrap">
+                      {info.description}
+                    </text>
+                  </div>
               </div>
             </div>
           </div>

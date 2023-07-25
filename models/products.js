@@ -2,7 +2,6 @@ import { Schema, model, models } from "mongoose";
 
 const productSchema = new Schema(
   {
-
     category: {
       type: String,
     },
@@ -15,6 +14,13 @@ const productSchema = new Schema(
     price: {
       type: Number,
     },
+    detalles: [
+      {
+        detalle: {
+          type: String,
+        },
+      },
+    ],
     color: [
       {
         colorTitle: {
@@ -28,9 +34,9 @@ const productSchema = new Schema(
             talla: {
               type: String,
             },
-            stock:{
-              type:Number
-            }
+            stock: {
+              type: Number,
+            },
           },
         ],
         imagenes: [
@@ -38,8 +44,8 @@ const productSchema = new Schema(
             imagen: {
               type: String,
             },
-          }
-        ]
+          },
+        ],
       },
     ],
   },
@@ -51,4 +57,4 @@ const productSchema = new Schema(
 
 const Product = models.Product || model("Product", productSchema);
 
-export default Product
+export default Product;

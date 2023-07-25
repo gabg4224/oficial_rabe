@@ -2,14 +2,13 @@ import { useState } from "react";
 
 import { useRouter } from "next/router";
 
-
 export default function CreateProduct() {
-
   const router = useRouter();
   const [product, setProduct] = useState({
     title: "",
     description: "",
     price: 1,
+    detalles: [],
     color: [
       {
         colorTitle: "",
@@ -80,7 +79,7 @@ export default function CreateProduct() {
     setProduct((prevProduct) => {
       const newColor = {
         colorTitle: "",
-         colorCode: "",
+        colorCode: "",
         tallas: [
           {
             talla: "XS",
@@ -148,11 +147,11 @@ export default function CreateProduct() {
     });
   };
 
-  const  handleSubmit = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(e);
 
-   await fetch("/api/products", {
+    await fetch("/api/products", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -161,8 +160,6 @@ export default function CreateProduct() {
     });
 
     router.push("/admin");
-
-    
   };
 
   const handleChange = (e) => {
@@ -202,9 +199,23 @@ export default function CreateProduct() {
       };
     });
   };
+  const handleChangeDetalles = (e, index) => {
+    const { name, value } = e.target;
 
+    setProduct((prevProduct) => {
+      const updatedDetalles = [...prevProduct.detalles];
+      updatedDetalles[index] = {
+        ...updatedDetalles[index],
+        detalle: value,
+      };
 
-  const handleChangeColorCode= (e, colorIndex) => {
+      return {
+        ...prevProduct,
+        detalles: updatedDetalles,
+      };
+    });
+  };
+  const handleChangeColorCode = (e, colorIndex) => {
     const { name, value } = e.target;
 
     setProduct((prevProduct) => {
@@ -271,7 +282,7 @@ export default function CreateProduct() {
         <div className="w-1/3">
           <form onSubmit={handleSubmit} action="" method="post">
             <div className=" flex flex-col gap-3">
-            <div>
+              <div>
                 <label htmlFor="Categoria">Categoria</label>
                 <input
                   type="text"
@@ -299,6 +310,46 @@ export default function CreateProduct() {
                   placeholder="Descripcion..."
                   className="  w-full h-24 flex p-2 "
                   onChange={handleChange}
+                />
+              </div>
+
+              <div>
+              <label htmlFor="Detalles">Detalles/Highlights</label>
+                <input
+                  className="border border-gray-400 w-full"
+                  type="text"
+                  name={`detalle`}
+                  onChange={(e) => handleChangeDetalles(e, 0)}
+                />
+                <input
+                  className="border border-gray-400 w-full"
+                  type="text"
+                  name={`detalle`}
+                  onChange={(e) => handleChangeDetalles(e, 1)}
+                />
+                <input
+                  className="border border-gray-400 w-full"
+                  type="text"
+                  name={`detalle`}
+                  onChange={(e) => handleChangeDetalles(e, 2)}
+                />
+                <input
+                  className="border border-gray-400 w-full"
+                  type="text"
+                  name={`detalle`}
+                  onChange={(e) => handleChangeDetalles(e, 3)}
+                />
+                <input
+                  className="border border-gray-400 w-full"
+                  type="text"
+                  name={`detalle`}
+                  onChange={(e) => handleChangeDetalles(e, 4)}
+                />
+                <input
+                  className="border border-gray-400 w-full"
+                  type="text"
+                  name={`detalle`}
+                  onChange={(e) => handleChangeDetalles(e, 5)}
                 />
               </div>
               <div className="py-2">
@@ -330,10 +381,10 @@ export default function CreateProduct() {
                     className="pl-2"
                     onChange={(e) => handleChangeColor(e, colorIndex)}
                   />
-                    <input
+                  <input
                     type="text"
                     name={`color[${colorIndex}].colorCode`}
-                    placeholder="#000000"
+                    placeholder="(#)codigoHexadecimal"
                     className="pl-2"
                     onChange={(e) => handleChangeColorCode(e, colorIndex)}
                   />

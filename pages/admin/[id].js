@@ -1,14 +1,16 @@
-import { useState} from "react";
+import { useState } from "react";
 import { useRouter } from "next/router";
 
 export default function EditProduct({ info }) {
-const router = useRouter();
+  const router = useRouter();
   const [product, setProduct] = useState({
-    category:info.category,
+    category: info.category,
     title: info.title,
     description: info.description,
+    detalles: info.detalles || [],
     price: info.price,
     color: info.color,
+    detalles: info.detalles,
   });
 
   console.log(info);
@@ -55,7 +57,14 @@ const router = useRouter();
           },
           {
             imagen: "",
-          },{
+          },
+          {
+            imagen: "",
+          },
+          {
+            imagen: "",
+          },
+          {
             imagen: "",
           },
           {
@@ -66,12 +75,7 @@ const router = useRouter();
           },
           {
             imagen: "",
-          }, {
-            imagen: "",
-          }, {
-            imagen: "",
           },
-          
         ],
       };
 
@@ -94,13 +98,11 @@ const router = useRouter();
         body: JSON.stringify(product),
       });
 
-
       router.push("/admin");
     } catch (error) {
       console.error("Error:", error);
       // Manejar cualquier error de red u otro error que pueda ocurrir
     }
-    
   };
 
   const handleChange = (e) => {
@@ -114,11 +116,10 @@ const router = useRouter();
   };
 
   const handleRemoveColor = (colorIndex) => {
-
     setProduct((prevProduct) => {
       const updatedColors = [...prevProduct.color];
       updatedColors.splice(colorIndex, 1);
-console.log(updatedColors);
+      console.log(updatedColors);
       return {
         ...prevProduct,
         color: updatedColors,
@@ -142,7 +143,7 @@ console.log(updatedColors);
     });
   };
 
-  const handleChangeColorCode= (e, colorIndex) => {
+  const handleChangeColorCode = (e, colorIndex) => {
     const { name, value } = e.target;
 
     setProduct((prevProduct) => {
@@ -203,6 +204,23 @@ console.log(updatedColors);
     });
   };
 
+  const handleChangeDetalles = (e, index) => {
+    const { name, value } = e.target;
+
+    setProduct((prevProduct) => {
+      const updatedDetalles = [...prevProduct.detalles];
+      updatedDetalles[index] = {
+        ...updatedDetalles[index],
+        detalle: value,
+      };
+
+      return {
+        ...prevProduct,
+        detalles: updatedDetalles,
+      };
+    });
+  };
+
   return (
     <>
       <div className="min-h-screen w-screen bg-gray-200 flex justify-center pt-6 ">
@@ -242,6 +260,52 @@ console.log(updatedColors);
                   value={product.description}
                 />
               </div>
+              <div>
+
+                <label htmlFor="Detalles">Detalles/Highlights</label>
+                <input
+                  className="border border-gray-400 w-full"
+                  type="text"
+                  name={`detalle`}
+                  value={product.detalles[0].detalle  || ""}
+                  onChange={(e) => handleChangeDetalles(e, 0)}
+                />
+                <input
+                  className="border border-gray-400 w-full"
+                  type="text"
+                  name={`detalle`}
+                  value={product.detalles[1].detalle || ""}
+                  onChange={(e) => handleChangeDetalles(e, 1)}
+                />
+                <input
+                  className="border border-gray-400 w-full"
+                  type="text"
+                  name={`detalle`}
+                  value={product.detalles[2].detalle  || ""}
+                  onChange={(e) => handleChangeDetalles(e, 2)}
+                />
+                <input
+                  className="border border-gray-400 w-full"
+                  type="text"
+                  name={`detalle`}
+                  value={product.detalles[3].detalle  || ""}
+                  onChange={(e) => handleChangeDetalles(e, 3)}
+                />
+                <input
+                  className="border border-gray-400 w-full"
+                  type="text"
+                  name={`detalle`}
+                  value={product.detalles[4].detalle  || ""}
+                  onChange={(e) => handleChangeDetalles(e, 4)}
+                />
+                <input
+                  className="border border-gray-400 w-full"
+                  type="text"
+                  name={`detalle`}
+                  value={product.detalles[5].detalle  || ""}
+                  onChange={(e) => handleChangeDetalles(e, 5)}
+                />
+              </div>
               <div className="py-2">
                 <label htmlFor="Precio">Precio</label>
                 <input
@@ -268,7 +332,7 @@ console.log(updatedColors);
                   <input
                     type="text"
                     name={`color[${colorIndex}].colorTitle`}
-                    placeholder="Rojo"
+                    placeholder="color"
                     className="pl-2"
                     onChange={(e) => handleChangeColor(e, colorIndex)}
                     value={product.color[colorIndex].colorTitle}
@@ -276,7 +340,7 @@ console.log(updatedColors);
                   <input
                     type="text"
                     name={`color[${colorIndex}].colorCode`}
-                    placeholder="#000000"
+                    placeholder="(#)codigoHexadecimal"
                     className="pl-2"
                     onChange={(e) => handleChangeColorCode(e, colorIndex)}
                     value={product.color[colorIndex].colorCode}
