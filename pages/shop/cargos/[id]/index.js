@@ -5,9 +5,8 @@ import Stocker from "@/components/stocker";
 import CartButton from "@/components/cartButton";
 import Slider from "@/components/slider";
 export default function CargosDinamic({ info }) {
+  console.log(info);
   const colorHandler = (index, infoItem) => {
-    
-
     setActiveColor({
       ...activeColor,
       colorName: infoItem.colorTitle,
@@ -15,9 +14,8 @@ export default function CargosDinamic({ info }) {
       colorCode: infoItem.colorCode,
       images: infoItem.imagenes,
       tallaActive: infoItem.tallas[0],
-      id: infoItem.tallas[0]._id
+      id: infoItem.tallas[0]._id,
     });
-
   };
 
   const [activeColor, setActiveColor] = useState({
@@ -26,21 +24,18 @@ export default function CargosDinamic({ info }) {
     colorName: info.color[0].colorTitle,
     colorCode: info.color[0].colorCode,
     images: info.color[0].imagenes,
-    price:info.price,
-    title:info.title,
-    id: info.color[0].tallas[0]._id
+    detalles: info.detalles,
+    price: info.price,
+    title: info.title,
+    id: info.color[0].tallas[0]._id,
   });
-
 
   const sizeHandler = (item) => {
     setActiveColor({
       ...activeColor,
       tallaActive: item,
-      id: item._id
+      id: item._id,
     });
-
-   
-
   };
 
   return (
@@ -76,7 +71,27 @@ export default function CargosDinamic({ info }) {
                       $ {info.price.toFixed(2)}
                     </h2>
                   </div>
+                  <div className=" flex flex-wrap  py-2 ">
+                    <p className="break-words mb-4">{info.description}</p>
 
+                    <div className=" w-full text-gray-500 ">
+                      <h3>Detalles:</h3>
+
+                      <div>
+                        <ul className="flex flex-wrap ">
+                          {activeColor.detalles.map((item, index) => {
+                            if (item.detalle !== "") {
+                              return (
+                                <li key={item._id} className="basis-1/2 text-xs py-2 flex flex-wrap ">
+                                  {item.detalle}
+                                </li>
+                              );
+                            }
+                          })}
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
                   <div className="flex h-16 ">
                     <div className="flex gap-2 h-full  items-center">
                       {info.color.map((item, index) => (
@@ -124,16 +139,10 @@ export default function CargosDinamic({ info }) {
                 <div className="pt-8">
                   <CartButton item={activeColor}></CartButton>
                 </div>
-               
+
                 <div className="h-12 flex items-center sm:py-8">
                   <Stocker stock={activeColor.tallaActive.stock}></Stocker>
                 </div>
-
-                <div className=" flex flex-wrap  py-2 ">
-                    <text className=" h-full w-full break-words">
-                      {info.description}
-                    </text>
-                  </div>
               </div>
             </div>
           </div>

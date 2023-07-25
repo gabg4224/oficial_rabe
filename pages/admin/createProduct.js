@@ -510,11 +510,11 @@ export default function CreateProduct() {
               Agregar color
             </button>
 
-            <div className="w-full  pt-3 flex justify-center">
+            <div className="w-full  pt-3 flex justify-center  ">
               <input
                 type="submit"
                 value={"Guardar"}
-                className="bg-blue-500 text-white font-bold py-2 px-4 rounded "
+                className="bg-blue-500 text-white font-bold py-2 px-4 rounded cursor-pointer"
               />
             </div>
           </form>
