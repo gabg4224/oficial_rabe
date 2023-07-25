@@ -130,7 +130,7 @@ export default function CargosDinamic({ info }) {
                 </div>
 
                 <div className=" flex flex-wrap  py-2 ">
-                    <text className=" h-full w-full whitespace-pre-wrap">
+                    <text className=" h-full w-full break-words">
                       {info.description}
                     </text>
                   </div>
