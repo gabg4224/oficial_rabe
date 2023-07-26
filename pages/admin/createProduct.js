@@ -150,6 +150,7 @@ export default function CreateProduct() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(e);
+    router.push("/admin");
 
     await fetch("/api/products", {
       method: "POST",
@@ -159,7 +160,7 @@ export default function CreateProduct() {
       body: JSON.stringify(product),
     });
 
-    router.push("/admin");
+   
   };
 
   const handleChange = (e) => {

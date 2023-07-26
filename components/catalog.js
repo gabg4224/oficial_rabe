@@ -66,7 +66,7 @@ export function ItemsTable({ info,view}) {
     return (
       <>
     <div className="flex flex-col">
-          <div className="grid  w-full  sm:grid-cols-2  md:grid-cols-3 lg:grid-cols-4 ">
+          <div className="grid  w-full   sm:grid-cols-2  md:grid-cols-3 lg:grid-cols-4 ">
             {info &&
               info
                 .slice(0, displayCount)
@@ -91,7 +91,7 @@ export function ItemsTable({ info,view}) {
 
     return (
       <>
-    <div className="flex flex-col lg:gap-4">
+    <div className="flex flex-col lg:gap-4 max-w-5xl w-full">
           <div className="grid  w-full   sm:grid-cols-2  md:grid-cols-3 lg:grid-cols-4">
             {info &&
               info

@@ -25,32 +25,33 @@ export default function View({ view, info }) {
       <>
         <li
        
-          className="flex relative justify-self-center  box-border flex-col w-auto max-w-[17rem] md:max-w-[15rem] p-2 group  mb-3 "
+          className="flex relative justify-self-center  box-border flex-col lg:w-[17rem] max-w-[17rem] md:max-w-[15rem] p-2 group  mb-3 "
         >
           <div className="h-full relative pb-3">
             <Link href={`/shop/cargos/${getFriendlyTitle(info.title)}`}>
-              <div className="bg-[#f3f3f5] flex justify-center items-center h-60 relative z-10">
+              <div className="bg-[#f3f3f5] flex justify-center items-center lg:h-64 relative z-10">
                 <Image
                   src={`${activeColor.images[0].imagen}`}
-                  width={2000 }
-                  height={2000}
+                  width={1080 }
+                  height={1350}
                   alt="camisa"
-                  className="transition-opacity opacity-0 duration-1000 w-fit h-fit max-h-60"
+                  className="transition-opacity opacity-0 duration-1000 w-fit h-fit max-h-72"
                   onLoadingComplete={(image)=> image.classList.remove("opacity-0")}
                 ></Image>
               </div>
-              <div className="bg-[#f3f3f5] md:h-60 inset-0 flex justify-center items-center absolute z-20 opacity-0 lg:group-hover:opacity-100 transition-all duration-500 ease-out">
+              <div className="bg-[#f3f3f5] md:h-64  max-h-64 inset-0 flex justify-center items-center absolute z-20 opacity-0 lg:group-hover:opacity-100 transition-all duration-500 ease-out">
                 <Image
                   src={`${activeColor.images[1].imagen}`}
-                  width={2000}
-                  height={2000}
+                  width={1080}
+                  height={1350}
                   alt="camisa" 
-                  className="w-full"
+                  className="w-full max-h-72 opacity-0"
+                  onLoadingComplete={(image)=> image.classList.remove("opacity-0")}
                 ></Image>
               </div>
             </Link>
 
-            <div className="block inset-0 relative z-20 flex-col  items-start pt-3">
+            <div className="block inset-0 relative z-20 flex-col  items-start sm:pt-2 md:pt-2 lg:pt-4">
               <div className="pb-3 flex flex-col gap-2 ">
               <h3 className="text-xs uppercase text-black font-semibold">
                   {info.title}
@@ -90,20 +91,24 @@ export default function View({ view, info }) {
         <div className="flex relative justify-self-center  box-border flex-col w-auto max-w-[17rem] md:max-w-[15rem] h-auto p-2 group cursor-pointer mb-3 ">
           <div className="h-full relative ">
             <div>
-              <div className="bg-[#f3f3f5] flex justify-center items-center h-60 relative z-10">
+            <div className="bg-[#f3f3f5] flex justify-center items-center lg:h-64 relative z-10">
                 <Image
                   src={`${activeColor.images[0].imagen}`}
-                  width={300}
-                  height={200}
+                  width={1080 }
+                  height={1350}
                   alt="camisa"
+                  className="transition-opacity opacity-0 duration-1000 w-fit h-fit max-h-72"
+                  onLoadingComplete={(image)=> image.classList.remove("opacity-0")}
                 ></Image>
               </div>
-              <div className="bg-[#f3f3f5] h-60 inset-0 flex justify-center items-center absolute z-20 opacity-0 group-hover:opacity-100 transition-all duration-500 ease-out">
+              <div className="bg-[#f3f3f5] md:h-64  max-h-64 inset-0 flex justify-center items-center absolute z-20 opacity-0 lg:group-hover:opacity-100 transition-all duration-500 ease-out">
                 <Image
                   src={`${activeColor.images[1].imagen}`}
-                  width={3000}
-                  height={2000}
-                  alt="camisa"
+                  width={1080}
+                  height={1350}
+                  alt="camisa" 
+                  className="w-full max-h-72 opacity-0"
+                  onLoadingComplete={(image)=> image.classList.remove("opacity-0")}
                 ></Image>
               </div>
             </div>

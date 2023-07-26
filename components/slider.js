@@ -37,10 +37,10 @@ info.map((item, index)=>{
       {
         <Image
           src={item.imagen}
-          width={1500}
-          height={1000}
-          alt="asad"
-          priority
+          width={1350}
+          height={1080}
+          alt={item.imagen}
+          
           className=" lg:max-w-md"
         ></Image>
       }

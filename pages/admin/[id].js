@@ -89,6 +89,7 @@ export default function EditProduct({ info }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(product);
+    router.push("/admin");
     try {
       await fetch(`/api/products/${info._id}`, {
         method: "PUT",
@@ -98,7 +99,7 @@ export default function EditProduct({ info }) {
         body: JSON.stringify(product),
       });
 
-      router.push("/admin");
+      
     } catch (error) {
       console.error("Error:", error);
       // Manejar cualquier error de red u otro error que pueda ocurrir
