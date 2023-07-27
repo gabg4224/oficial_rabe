@@ -41,7 +41,7 @@ info.map((item, index)=>{
           height={1080}
           alt={item.imagen}
           
-          className=" lg:max-w-md"
+          className=""
         ></Image>
       }
       </div>

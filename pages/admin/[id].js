@@ -13,7 +13,20 @@ export default function EditProduct({ info }) {
     detalles: info.detalles,
   });
 
-  console.log(info);
+  if (product.detalles.length < 6) {
+    function fixedLengthArray(inputArray, length, defaultValue) {
+      const newArray = inputArray.slice(0, length);
+      while (newArray.length < length) {
+        newArray.push(defaultValue);
+      }
+      return newArray;
+    }
+    setProduct({ 
+      ...product,
+      detalles: fixedLengthArray(product.detalles, 6, ""),
+    });
+  }
+ 
 
   const handleAddColor = () => {
     setProduct((prevProduct) => {
@@ -98,8 +111,6 @@ export default function EditProduct({ info }) {
         },
         body: JSON.stringify(product),
       });
-
-      
     } catch (error) {
       console.error("Error:", error);
       // Manejar cualquier error de red u otro error que pueda ocurrir
@@ -113,14 +124,13 @@ export default function EditProduct({ info }) {
       [name]: value,
     }));
 
-    console.log(product);
   };
 
   const handleRemoveColor = (colorIndex) => {
     setProduct((prevProduct) => {
       const updatedColors = [...prevProduct.color];
       updatedColors.splice(colorIndex, 1);
-      console.log(updatedColors);
+   
       return {
         ...prevProduct,
         color: updatedColors,
@@ -262,50 +272,20 @@ export default function EditProduct({ info }) {
                 />
               </div>
               <div>
-
                 <label htmlFor="Detalles">Detalles/Highlights</label>
-                <input
-                  className="border border-gray-400 w-full"
-                  type="text"
-                  name={`detalle`}
-                  value={product.detalles[0].detalle  || ""}
-                  onChange={(e) => handleChangeDetalles(e, 0)}
-                />
-                <input
-                  className="border border-gray-400 w-full"
-                  type="text"
-                  name={`detalle`}
-                  value={product.detalles[1].detalle || ""}
-                  onChange={(e) => handleChangeDetalles(e, 1)}
-                />
-                <input
-                  className="border border-gray-400 w-full"
-                  type="text"
-                  name={`detalle`}
-                  value={product.detalles[2].detalle  || ""}
-                  onChange={(e) => handleChangeDetalles(e, 2)}
-                />
-                <input
-                  className="border border-gray-400 w-full"
-                  type="text"
-                  name={`detalle`}
-                  value={product.detalles[3].detalle  || ""}
-                  onChange={(e) => handleChangeDetalles(e, 3)}
-                />
-                <input
-                  className="border border-gray-400 w-full"
-                  type="text"
-                  name={`detalle`}
-                  value={product.detalles[4].detalle  || ""}
-                  onChange={(e) => handleChangeDetalles(e, 4)}
-                />
-                <input
-                  className="border border-gray-400 w-full"
-                  type="text"
-                  name={`detalle`}
-                  value={product.detalles[5].detalle  || ""}
-                  onChange={(e) => handleChangeDetalles(e, 5)}
-                />
+
+                {product.detalles.map((detalle, index) => {
+                  return (
+                    <input
+                    key={index}
+                      className="border border-gray-400 w-full"
+                      type="text"
+                      name={`detalle`}
+                      value={detalle.detalle}
+                      onChange={(e) => handleChangeDetalles(e, index)}
+                    />
+                  );
+                })}
               </div>
               <div className="py-2">
                 <label htmlFor="Precio">Precio</label>

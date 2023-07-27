@@ -45,7 +45,7 @@ export default function CargosDinamic({ info }) {
       <div className="w-full  sm:h-auto  lg:h-screen  pt-4 flex justify-center ">
         <div className="flex sm:flex-col lg:max-h-168 lg:flex-row h-full sm:w-full lg:w-[70%] justify-center">
           <div className="lg:w-2/4 sm:w-full  lg:max-w-2xl   flex justify-center    lg:h-full">
-            <div className="h-full sm:w-11/12 bg-zinc-300 sm:py-14 lg:py-14  ">
+            <div className="h-full sm:w-11/12 bg-zinc-300 sm:py-14 lg:py-0">
               {info && <Slider info={activeColor.images}></Slider>}
               {/* <Image
                 src={activeColor.images[0].imagen}
@@ -56,7 +56,7 @@ export default function CargosDinamic({ info }) {
             </div>
           </div>
 
-          <div className="w-full flex md:justify-center lg:justify-normal">
+          <div className="   flex md:justify-center lg:justify-center">
             <div className="flex flex-col sm:pt-7 lg:py-0  px-4 sm:w-full md:w-[90%]  lg:max-w-xl h-full ">
               <div className=" w-full flex flex-col   pb-3 border-b-2 border-gray-100 ">
                 <div className=" flex flex-col">
@@ -82,7 +82,7 @@ export default function CargosDinamic({ info }) {
                           {activeColor.detalles.map((item, index) => {
                             if (item.detalle !== "") {
                               return (
-                                <li key={item._id} className="basis-1/2 text-xs py-2 flex flex-wrap ">
+                                <li key={index} className="basis-1/2 text-xs py-2 flex flex-wrap ">
                                   {item.detalle}
                                 </li>
                               );
