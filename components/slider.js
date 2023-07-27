@@ -20,7 +20,7 @@ export default function  Slider({info}){
 
   return (
     <>
-      <div className="navigation-wrapper relative w-full h-full">
+      <div className="navigation-wrapper relative aspect-4/5">
         <div ref={sliderRef} className="keen-slider">
 
         {
@@ -32,7 +32,7 @@ info.map((item, index)=>{
     return(
 
 
-      <div key={index} className={`keen-slider__slide flex justify-center items-center`} >
+      <div key={index} className={`keen-slider__slide flex justify-center items-center aspect-4/5`} >
   
       {
         <Image

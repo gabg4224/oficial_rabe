@@ -44,8 +44,8 @@ export default function CargosDinamic({ info }) {
 
       <div className="w-full  sm:h-auto  lg:h-screen  pt-4 flex justify-center ">
         <div className="flex sm:flex-col lg:max-h-168 lg:flex-row h-full sm:w-full lg:w-[70%] justify-center">
-          <div className="lg:w-2/4 sm:w-full  lg:max-w-2xl   flex justify-center    lg:h-full">
-            <div className="h-full sm:w-11/12 bg-zinc-300 sm:py-14 lg:py-0">
+          <div className="lg:w-2/4 sm:w-full  lg:max-w-xl   flex justify-center    lg:h-full">
+            <div className="aspect-4/5 sm:w-11/12 bg-zinc-300 sm:py-14 lg:py-0 ">
               {info && <Slider info={activeColor.images}></Slider>}
               {/* <Image
                 src={activeColor.images[0].imagen}
