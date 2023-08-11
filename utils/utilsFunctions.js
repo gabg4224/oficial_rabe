@@ -1,5 +1,8 @@
 import { getItems } from "@/services/items";
 import { useAppContext } from "@/components/contextWrapper";
+import { Router, useRouter } from "next/router";
+
+
 export async function getPathsFromId() {
   const items = await getItems();
   const id = items.map((item) => {
@@ -41,3 +44,11 @@ export const getTotal = () => {
   const totalFixed = total.t;
   return total;
 };
+
+export const checkOutButton = () => {
+  const cart = useAppContext();
+  const router = useRouter();
+  cart.closeCart
+
+router.push("/shop/buy/pasarela");
+}

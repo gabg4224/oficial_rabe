@@ -10,7 +10,7 @@ const initialState = {
     detalles: [],
     price: 0,
     title: "",
-  },
+  }
 };
 
 export const useStore = create((set) => ({

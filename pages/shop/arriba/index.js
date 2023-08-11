@@ -1,4 +1,5 @@
 import { ItemsTable } from "@/components/catalog";
+import { constantes } from "@/utils/constantes";
 import { getItemsByCategory } from "@/utils/utilsFunctions";
 
 export default function seccionCargo({ info }) {
@@ -28,7 +29,7 @@ export default function seccionCargo({ info }) {
 }
 
 export const getServerSideProps = async () => {
-  const info = await getItemsByCategory("arriba");
+  const info = await getItemsByCategory(constantes.PARTE_DE_ARRIBA);
 console.log(info)
   return { props: { info } };
 };

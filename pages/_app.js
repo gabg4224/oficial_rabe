@@ -3,6 +3,7 @@ import "@/styles/globals.css";
 import MainLayout from "./MainLayout";
 import "styles/menu.css"
 import "@/styles/slider.css"
+import"@/styles/spinner.css"
 export default function App({ Component, pageProps }) {
   return (
     <>

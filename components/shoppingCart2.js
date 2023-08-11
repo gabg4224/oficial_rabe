@@ -2,8 +2,10 @@
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { useAppContext } from "./contextWrapper";
 
+
 import ShoppingItemView from "./shoppingItemView";
 import Link from "next/link";
+import { checkOutButton } from "@/utils/utilsFunctions";
 
 export default function ShoppingCart() {
   const cart = useAppContext();
@@ -13,11 +15,12 @@ export default function ShoppingCart() {
       (acc, item) => acc + item.price * item.quantity,
       0
     ).toFixed(2);
-    const totalFixed = total.t
+
     return total;
   };
 
   return (
+
     <>
       <div
         className={`fixed inset-0 -z-10" bg-gray-500 bg-opacity-75 opacity-0    transition-all duration-500 ${
@@ -63,9 +66,11 @@ export default function ShoppingCart() {
                 <p>${getTotal()}</p>
               </div>
               <div className="w-11/12 flex justify-center items-center py-1 flex-col">
-                <button className=" text-white flex justify-center items-center py-1  font-bold  text-xs bg-black rounded-sm w-full">
-                <Link href={"/shop/buy/pasarela"} onClick={cart.closeCart}>Check Out</Link>
-                </button>
+                
+                <Link href={"/shop/buy/pasarela"} onClick={cart.closeCart} className=" text-white flex justify-center items-center py-2  font-bold  text-xs bg-black rounded-sm w-full ">
+               Check Out
+                </Link>
+               
                 <Link href={"/shop/buy"}>
                   <p onClick={cart.closeCart} className="underline text-xs text-gray-500 pt-1 hover:text-gray-600">
                     view cart
