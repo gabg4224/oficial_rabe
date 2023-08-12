@@ -41,7 +41,6 @@ export const getTotal = () => {
   const total = cart.items
     .reduce((acc, item) => acc + item.price * item.quantity, 0)
     .toFixed(2);
-  const totalFixed = total.t;
   return total;
 };
 

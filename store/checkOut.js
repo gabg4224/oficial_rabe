@@ -9,25 +9,22 @@ const initialState = {
     },
   },
   checkOutPasarela: {
-    metodoEnvio: {
-      tipoEnvio: "",
-      datosEnvio: {
-        cedula: "",
-        numeroContacto: "",
-        nombreYApellido: "",
-        ubicacion: "",
-        agenciaDeEnvios: "",
-      },
-    },
+    tipoEnvio: "nacionales",
 
-    metodoPago: {
-      moneda: "",
-      metodoPago: "",
-    },
+    cedula: "",
+    numeroContacto: "",
+    nombreYApellido: "",
+    ubicacion: "",
+    agenciaDeEnvios: "MRW",
+
+    moneda: "dolares",
+    metodoPago: "paypal",
   },
 };
 
 export const useStoreCheckOut = create((set) => ({
   ...initialState,
-  setCheckOutPasarela: (value) => set((state) => ({ ...state, checkOutPasarela: value })),
+  setCheckOutPasarela: (value) =>
+    set((state) => ({ ...state, checkOutPasarela: value })),
 }));
+
