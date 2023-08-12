@@ -45,7 +45,7 @@ export default function Pasarela() {
       })
       .join("\n");
 
-    const valorTotal = `\n\n${total}`;
+    const valorTotal = `\n\n${total}\n`;
     const nombre = `\nNombre: ${checkOutPasarela.nombreYApellido}\n`;
     const cedula = `Cedula: ${checkOutPasarela.cedula}\n`;
     const contacto = `Contacto: ${checkOutPasarela.numeroContacto}\n`;
