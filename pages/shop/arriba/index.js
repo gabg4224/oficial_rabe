@@ -1,7 +1,7 @@
 import { ItemsTable } from "@/components/catalog";
-import { constantes } from "@/utils/constantes";
 import { getItemsByCategory } from "@/utils/utilsFunctions";
-
+import { constantes} from "@/utils/constantes";
+import { Suspense } from "react";
 export default function seccionCargo({ info }) {
 
 
@@ -19,17 +19,21 @@ export default function seccionCargo({ info }) {
     }
   return (
     <>
-      <div className="pt-10 sm:px-3  flex items-center justify-center">
-        <div className=" flex w-full items-center justify-center">
+<Suspense fallback={<>Loading...</>}>
+      <div className="sm:pt-10 lg:pt-15 sm:px-3  min-h-screen flex justify-center">
+        <div className=" flex lg:w-10/12 justify-center ">
         <ItemsTable view={"card"} info={info}></ItemsTable>
         </div>
       </div>
+
+      </Suspense>
     </>
   );
 }
 
-export const getServerSideProps = async () => {
+export const getStaticProps = async () => {
   const info = await getItemsByCategory(constantes.PARTE_DE_ARRIBA);
 console.log(info)
-  return { props: { info } };
+  return { props: { info },
+  revalidate: 60 };
 };

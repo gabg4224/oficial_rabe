@@ -16,12 +16,12 @@ export const  routes = [
     subMenu: true,
     subMenuItems: [
       { label: "cargos", route: "/shop/cargos", icon: "BuildingStorefrontIcon" },
-      { label: "arriba", route: "/shop/arriba", icon: "BuildingStorefrontIcon" },
+      { label: "hoodies", route: "/shop/arriba", icon: "BuildingStorefrontIcon" },
     ],
   },
   {
     label: "Costumer Service",
-    route: "/costumerService",
+    route: "/",
     icon: "BuildingStorefrontIcon",
     subMenu: true,
     subMenuOpen: false,

@@ -84,10 +84,10 @@ window.open(whatsappUrl, "_blank");
   };
   return (
     <>
-      <section className="w-full h-[80vh] min-h-[80vh] max-h-max">
-        <div className="w-3/4 h-full m-auto  grid grid-cols-2 grid-rows-2 bg-white">
-          <div className=" col-span-1 row-span-2  flex py-2 items-center  flex-col">
-            <div className="w-9/12 h-5/6 bg-white border p-2 overflow-y-scroll mb-3">
+      <section className="w-full sm:h-auto md:h-[80vh] lg:min-h-[80vh] max-h-max">
+        <div className=" sm:w-full sm:px-2 lg:px-0 lg:w-3/4 h-full m-auto  grid grid-cols-2 grid-rows-2 bg-white">
+          <div className="  sm:col-span-2 sm:row-span-2 lg:col-span-1 sm:max-h-96 md:max-h-full lg:row-span-2  flex py-2 items-center  flex-col">
+            <div className=" sm:w-full lg:w-9/12 h-5/6 bg-white border p-2 overflow-y-scroll mb-3">
               {cart.items.map((items, index) => {
                 return (
                   <div key={index} className="w-full border-b-[1px] flex ">
@@ -144,10 +144,10 @@ window.open(whatsappUrl, "_blank");
               </p>
             </div>
           </div>
-<form action="" onSubmit={messageHandler}>
-          <section className="col-span-1 row-span-2">
+<form action="" onSubmit={messageHandler} className="w-full lg:col-span-1 lg:row-span-2  md:col-span-2 md:row-span-1 sm:col-span-2 sm:row-span-1 ">
+          <section className="">
             <div className="w-full  py-2 text-sm">
-              <ul className=" flex gap-3 ">
+              <ul className=" flex gap-3  w-full">
                 {pasarela &&
                   pasarela.envios.map((item, index) => (
                     <li key={index} 
@@ -246,20 +246,20 @@ window.open(whatsappUrl, "_blank");
               </div>
             </section>
             {/* moneda y metodo de pago*/}
-            <p className=" text-xs font-bold">
+            <p className=" text-xs font-bold sm:py-2 md:py-0">
               Seleccione un metodo de pago(*)
             </p>
-            <div className=" flex gap-4 mb-8">
-              <section>
+            <div className=" flex gap-4 mb-6 ">
+              <section className="sm:w-1/2 md:w-auto">
                 <div className="w-full py-2 ">
                   <select
-                    className=" cursor-pointer gap-3 text-sm bg-black  text-white rounded flex flex-wrap h-10 w-20 justify-center items-center capitalize"
+                    className=" cursor-pointer gap-3 text-sm bg-black  text-white rounded flex flex-wrap h-10 lg:w-20 sm:w-full  justify-center items-center capitalize"
                     name="moneda"
                     onChange={checkOutHandler}
                   >
                     {pasarela &&
                       Object.keys(pasarela.metodosDePago).map((item, index) => (
-                        <option key={index} className="bg-black  text-white rounded flex flex-wrap h-16 w-32 justify-center items-center capitalize">
+                        <option key={index} className="bg-black  text-white rounded flex flex-wrap h-16 w-32 justify-center items-center capitalize text-center">
                           {item}
                         </option>
                       ))}
@@ -267,10 +267,10 @@ window.open(whatsappUrl, "_blank");
                 </div>
               </section>
 
-              <section>
+              <section className="sm:w-1/2 md:w-auto">
                 <div className="w-full  py-2">
                   <select
-                    className="gap-3 cursor-pointer text-sm bg-black  text-white rounded flex flex-wrap h-10 w-20 justify-center items-center capitalize"
+                    className="gap-3 cursor-pointer text-sm bg-black  text-white rounded flex flex-wrap h-10 lg:w-20 sm:w-full justify-center items-center capitalize"
                     name="metodoPago"
                     onChange={checkOutHandler}
                   >
@@ -279,7 +279,7 @@ window.open(whatsappUrl, "_blank");
                         checkOutPasarela.moneda === "dolares" ? 0 : 1
                       ].map((item, index) => {
                         return (
-                          <option  key={index} className="bg-black  text-white rounded flex flex-wrap h-16 w-32 justify-center items-center capitalize">
+                          <option  key={index} className="bg-black  text-white rounded flex flex-wrap h-16 w-32 justify-center items-center capitalize  text-center">
                             {item}
                           </option>
                         );
@@ -292,12 +292,15 @@ window.open(whatsappUrl, "_blank");
               </section>
             </div>
 
-            <button
-              className="w-60 py-2 bg-black text-white "
+          <div className="flex sm:justify-center md:justify-normal mb-4">
+          <button
+              className="w-60 py-2 bg-black text-white  "
               onClick={messageHandler}
             >
               enviar a whatsapp
             </button>
+
+          </div>
           </section>
           </form>
         </div>
