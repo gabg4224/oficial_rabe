@@ -84,7 +84,7 @@ window.open(whatsappUrl, "_blank");
   };
   return (
     <>
-      <section className="w-full sm:h-screen md:h-[80vh]  lg:min-h-[80vh] max-h-max">
+      <section className="w-full sm:h-screen sm:min-h-screen md:h-[80vh]  lg:min-h-[80vh] max-h-max">
         <div className=" sm:w-full sm:px-2 lg:px-0 lg:w-3/4 h-full m-auto  grid grid-cols-2 grid-rows-2 bg-white">
           <div className="  sm:col-span-2 sm:row-span-2 lg:col-span-1 sm:max-h-full md:max-h-full lg:row-span-2  flex py-2 items-center  flex-col">
             <div className=" sm:w-full lg:w-9/12 h-5/6 bg-white border p-2 overflow-y-scroll mb-3">

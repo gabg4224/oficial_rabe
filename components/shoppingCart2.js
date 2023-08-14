@@ -5,7 +5,7 @@ import { useAppContext } from "./contextWrapper";
 
 import ShoppingItemView from "./shoppingItemView";
 import Link from "next/link";
-import { checkOutButton } from "@/utils/utilsFunctions";
+
 
 export default function ShoppingCart() {
   const cart = useAppContext();
