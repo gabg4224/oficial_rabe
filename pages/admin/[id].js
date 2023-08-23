@@ -274,7 +274,7 @@ export default function EditProduct({ info }) {
               <div>
                 <label htmlFor="Detalles">Detalles/Highlights</label>
 
-                {product.detalles.map((detalle, index) => {
+                {product?.detalles.map((detalle, index) => {
                   return (
                     <input
                     key={index}

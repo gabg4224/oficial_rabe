@@ -320,7 +320,7 @@ export default function CreateProduct() {
                   className="border border-gray-400 w-full"
                   type="text"
                   name={`detalle`}
-                  value={''}
+
                   onChange={(e) => handleChangeDetalles(e, 0)}
                 />
                 <input
