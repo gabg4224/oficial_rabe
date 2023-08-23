@@ -281,7 +281,7 @@ export default function EditProduct({ info }) {
                       className="border border-gray-400 w-full"
                       type="text"
                       name={`detalle`}
-                      value={detalle.detalle}
+                      value={detalle?.detalle}
                       onChange={(e) => handleChangeDetalles(e, index)}
                     />
                   );
