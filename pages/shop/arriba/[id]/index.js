@@ -68,7 +68,7 @@ export default function ArribaDinamic({ info }) {
   return (
     <>
       <div className="w-full  sm:h-auto  lg:h-screen  pt-4 flex justify-center ">
-        <div className="flex sm:flex-col lg:pt-9 lg:max-h-168 lg:flex-row h-full sm:w-full lg:w-[70%] justify-center">
+        <div className="flex sm:flex-col lg:pt-9 lg:max-h-168 lg:flex-row h-full sm:w-full lg:w-[70%] justify-center lg:gap-4">
           <div className="lg:w-2/4 sm:w-full  lg:max-w-xl   flex sm:justify-center lg:justify-end    lg:h-full">
             <div className="aspect-4/5 sm:w-11/12  lg:w-auto sm:py-2 lg:py-0 ">
               {Object.keys(colorActive).length > 0 && <Slider/>}
@@ -77,7 +77,7 @@ export default function ArribaDinamic({ info }) {
 
           <div className="   flex md:justify-center lg:justify-start">
             <div className="flex flex-col sm:pt-7 lg:py-0  px-4 sm:w-full md:w-[90%]  lg:max-w-xl h-full ">
-              <div className=" w-full flex flex-col   pb-3 border-b-2 border-gray-100 ">
+              <div className=" w-full flex flex-col   pb-3  border-gray-100 ">
                 <div className=" flex flex-col">
                   <div className="flex flex-col ">
                     <h3 className="text-sm pb-4 text-gray-500 uppercase">
@@ -105,7 +105,7 @@ export default function ArribaDinamic({ info }) {
                     </h2>
                   </div>
                   <div className=" flex flex-wrap  sm:py-2 ">
-                    <p className="break-words mb-4 text-justify">
+                    <p className="break-words mb-4 whitespace-pre-line ">
                       {info.description}
                     </p>
 
@@ -114,8 +114,8 @@ export default function ArribaDinamic({ info }) {
 
                       <div>
                         <ul className="flex flex-wrap ">
-                          {colorActive?.detalles.map((item, index) => {
-                            if (item.detalle !== "") {
+                          {colorActive?.detalles?.map((item, index) => {
+                            if (item.detalle && item.detalle !== "") {
                               return (
                                 <li
                                   key={index}
